@@ -45,7 +45,7 @@ request = Request(
     method="GET",
     target="/",
     protocol="HTTP/1.1",
-    headers={"Host": "www.google.com", "Connection": "keep-alive",},
+    headers={"Host": "www.google.com", "Connection": "keep-alive", "Content-Length": "18"},
     body=json.dumps({"hello": "world"}),
 )
 
@@ -53,7 +53,7 @@ response = Response(
     protocol="HTTP/1.1",
     status=200,
     status_msg="OK",
-    headers={"Host": "www.google.com", "Connection": "keep-alive",},
+    headers={"Host": "www.google.com", "Connection": "keep-alive", "Content-Length": "18"},
     body=json.dumps({"hello": "world"}),
 )
 ```
@@ -68,6 +68,7 @@ request = Request.parse(
         b"GET / HTTP/1.1\r\n"
         b"Host: www.google.com\r\n"
         b"Connection: keep-alive\r\n"
+        b"Content-Length: 18\r\n"
         b"\r\n"
         b'{"hello": "world"}'
     )
@@ -78,6 +79,7 @@ response = Response.parse(
         b"HTTP/1.1 200 OK\r\n"
         b"Host: www.google.com\r\n"
         b"Connection: keep-alive\r\n"
+        b"Content-Length: 18\r\n"
         b"\r\n"
         b'{"hello": "world"}'
     )
@@ -106,10 +108,10 @@ Once the object is modified to the users preference, utilizing the `Request` and
 
 ```python
 print(request.raw)
-# >>> b'POST / HTTP/1.1\r\nHost: www.google.com\r\nConnection: keep-alive\r\nAccept: */*\r\n\r\n{"hello": "world"}'
+# >>> b'POST / HTTP/1.1\r\nHost: www.google.com\r\nConnection: keep-alive\r\nContent-Length: 18\r\nAccept: */*\r\n\r\n{"hello": "world"}'
 
 print(response.raw)
-# >>> b'HTTP/1.1 100 Continue\r\nHost: www.google.com\r\nConnection: keep-alive\r\n\r\n{"hello": "world"}'
+# >>> b'HTTP/1.1 100 Continue\r\nHost: www.google.com\r\nConnection: keep-alive\r\nContent-Length: 18\r\n\r\n{"hello": "world"}'
 ```
 
 Uniquely, the `__str__` method for `Request` and `Response` return the objects with arrows to make obvious of its type:
@@ -123,6 +125,7 @@ print(response)
 → POST / HTTP/1.1
 → Host: www.google.com
 → Connection: keep-alive
+→ Content-Length: 18
 → Accept: */*
 →
 → {"hello": "world"}
@@ -130,6 +133,7 @@ print(response)
 ← HTTP/1.1 100 Continue
 ← Host: www.google.com
 ← Connection: keep-alive
+← Content-Length: 18
 ←
 ← {"hello": "world"}
 ```
