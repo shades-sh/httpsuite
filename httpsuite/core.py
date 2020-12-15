@@ -3,8 +3,6 @@
 from __future__ import annotations
 
 import abc
-import socket
-import textwrap
 from typing import NoReturn, Union
 
 from httpsuite.helpers import Headers, Item
