@@ -6,6 +6,10 @@ Versions
 ``v1``
 *********
 
+``1.0.5``
+=========
+  * Fixed documentation bug relating to ```sphinx_rtd_theme```.
+
 ``1.0.4``
 =========
   * Fixed documentation bug relating to ```m2r```.

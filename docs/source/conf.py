@@ -52,7 +52,6 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
-    "sphinx_rtd_theme",
     "m2r2",
 ]
 
