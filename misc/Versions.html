@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Versions &#8212; httpsuite 1.0.5 documentation</title>
+    <title>Versions &#8212; httpsuite 1.0.6 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -39,41 +39,43 @@
 <div class="section" id="v1">
 <h1><code class="docutils literal notranslate"><span class="pre">v1</span></code><a class="headerlink" href="#v1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2><code class="docutils literal notranslate"><span class="pre">1.0.5</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">1.0.6</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>Fixed documentation bug relating to <code class="docutils literal notranslate"><span class="pre">`sphinx_rtd_theme`</span></code>.</p></li>
+<li><p>Updated core <code class="docutils literal notranslate"><span class="pre">Message</span></code> to include <code class="docutils literal notranslate"><span class="pre">protocol</span></code> by default.</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">info.py</span></code> and place content inside <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p></li>
+<li><p>Formatted some tests with Black.</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="id2">
-<h2><code class="docutils literal notranslate"><span class="pre">1.0.4</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">1.0.5</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>Fixed documentation bug relating to <code class="docutils literal notranslate"><span class="pre">`m2r`</span></code>.</p></li>
+<li><p>Fixed documentation bug relating to <code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code>.</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="id3">
-<h2><code class="docutils literal notranslate"><span class="pre">1.0.3</span></code><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">1.0.4</span></code><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>Fixed PyLint errors.</p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">`__bool__`</span></code> to <code class="docutils literal notranslate"><span class="pre">`Item`</span></code> for accurate comparissons (i.e. <code class="docutils literal notranslate"><span class="pre">`if</span> <span class="pre">request.body`</span></code> will return <code class="docutils literal notranslate"><span class="pre">`False`</span></code> when no body exists).</p></li>
-<li><p>Modified <code class="docutils literal notranslate"><span class="pre">`Message._compile`</span></code> input param <code class="docutils literal notranslate"><span class="pre">`format`</span></code> to <code class="docutils literal notranslate"><span class="pre">`frmt`</span></code>.</p></li>
+<li><p>Fixed documentation bug relating to <code class="docutils literal notranslate"><span class="pre">m2r</span></code>.</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="id4">
-<h2><code class="docutils literal notranslate"><span class="pre">1.0.2</span></code><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">1.0.3</span></code><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>Cleaned up imports and codebase.</p></li>
+<li><p>Fixed PyLint errors.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">__bool__</span></code> to <code class="docutils literal notranslate"><span class="pre">Item</span></code> for accurate comparissons (i.e. <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">request.body</span></code> will return <code class="docutils literal notranslate"><span class="pre">False</span></code> when no body exists).</p></li>
+<li><p>Modified <code class="docutils literal notranslate"><span class="pre">Message._compile</span></code> input param <code class="docutils literal notranslate"><span class="pre">format</span></code> to <code class="docutils literal notranslate"><span class="pre">frmt</span></code>.</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="id5">
-<h2><code class="docutils literal notranslate"><span class="pre">1.0.1</span></code><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">1.0.2</span></code><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>Cleaned up imports and codebase.</p></li>
@@ -81,7 +83,15 @@
 </div></blockquote>
 </div>
 <div class="section" id="id6">
-<h2><code class="docutils literal notranslate"><span class="pre">1.0.0</span></code><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">1.0.1</span></code><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cleaned up imports and codebase.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h2><code class="docutils literal notranslate"><span class="pre">1.0.0</span></code><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>Initial commit.</p></li>
@@ -131,12 +141,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Versions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#v1"><code class="docutils literal notranslate"><span class="pre">v1</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">1.0.5</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">1.0.4</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">1.0.3</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">1.0.2</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">1.0.1</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">1.0.0</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">1.0.6</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">1.0.5</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">1.0.4</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">1.0.3</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">1.0.2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">1.0.1</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">1.0.0</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
