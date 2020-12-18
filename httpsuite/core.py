@@ -301,6 +301,10 @@ class Message(abc.ABC):
 
         return self._compile(frmt="str", arrow=arrow)
 
+    @property
+    def __items__(self) -> dict:
+        return {"protocol": self.protocol, "headers": self.headers, "body": self.body}
+
 
 class Request(Message):
     """Object representation of an HTTP request.
@@ -428,6 +432,18 @@ class Request(Message):
                 → {"hello": "world"}
         """
         return super()._string("→")
+
+    @property
+    def __items__(self) -> dict:
+        """ All ``Items`` corresponding to ``Request``. """
+
+        return {
+            **super().__items__,
+            **{
+                "method": self.method,
+                "target": self.target,
+            },
+        }
 
 
 class Response(Message):
@@ -561,3 +577,15 @@ class Response(Message):
                 ← {"hello": "world"}
         """
         return super()._string("←")
+
+    @property
+    def __items__(self) -> dict:
+        """ All ``Items`` corresponding to ``Response``. """
+
+        return {
+            **super().__items__,
+            **{
+                "status": self.status,
+                "status_msg": self.status_msg,
+            },
+        }
