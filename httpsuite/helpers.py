@@ -32,10 +32,11 @@ class Item:
     __slots__ = ["_item"]
 
     def __init__(self, item: Union[str, bytes, int, None, Item]) -> None:
+
         if (
             not isinstance(item, str)
             and not isinstance(item, bytes)
-            and not isinstance(item, int)
+            and not type(item) is int  # isinstance(True, int) is True.
             and not item is None
             and not isinstance(item, Item)
         ):
@@ -138,10 +139,10 @@ class Item:
         return hash(self._item)
 
     def __bool__(self) -> bool:
-        """Boolean representation of the current ```Item```.
+        """Boolean representation of the current ``Item``.
 
         Returns:
-            bool: Bool representation of the ```Item```.
+            bool: Bool representation of the ``Item``.
         """
         return bool(self._item)
 
