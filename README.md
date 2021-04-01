@@ -1,16 +1,16 @@
 # 🧳 httpsuite
 
 <p align="center">
-  <a href="https://travis-ci.com/synchronizing/httpsuite">
-    <img src="https://travis-ci.com/shades-sh/httpsuite.svg?branch=master">
+  <a href="https://github.com/shades-st/httpsuite/actions/workflows/pytest-cover-run.yml">
+    <img src="https://github.com/shades-st/httpsuite/actions/workflows/pytest-cover-run.yml/badge.svg">
   </a>
 
-  <a href="https://synchronizing.github.io/httpsuite/">
-    <img src="https://readthedocs.org/projects/pip/badge/?version=latest&style=flat">
+  <a href="https://shades-st.github.io/httpsuite/">
+    <img src="https://github.com/shades-st/httpsuite/actions/workflows/docs-publish.yml/badge.svg">
   </a>
 
-  <a href="https://coveralls.io/github/synchronizing/httpsuite?branch=master">
-    <img src="https://coveralls.io/repos/github/synchronizing/httpsuite/badge.svg?branch=master">
+  <a href="https://coveralls.io/github/shades-st/httpsuite?branch=master">
+    <img src="https://coveralls.io/repos/github/shades-st/httpsuite/badge.svg?branch=master">
   </a>
 
   <a href="https://opensource.org/licenses/MIT">
