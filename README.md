@@ -1,7 +1,6 @@
-<p align="center">
+# 🧳 httpsuite
 
-  <h1>🧳 httpsuite </h1>
-  <br><br>
+<p align="center">
   <a href="https://travis-ci.com/synchronizing/httpsuite">
     <img src="https://travis-ci.com/shades-sh/httpsuite.svg?branch=master">
   </a>
