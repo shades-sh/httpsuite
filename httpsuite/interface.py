@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """ Lower-level interfaces that ``httpsuite`` depedents on. """
 
-from __future__ import annotations
-
 from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Iterable, NoReturn, Union
+from typing import Iterable, Union
 
 from toolbox.collections.item import Item, ENCODE
+
+HeadersType = Union[dict, "Headers", None]
 
 
 class Headers(dict):
@@ -61,7 +61,7 @@ class Headers(dict):
 
         return data
 
-    def _check(self, value: HeadersType) -> Union[None, NoReturn]:
+    def _check(self, value: HeadersType) -> Union[None, None]:
         """Checks the item type to verify it is either Headers or dict.
 
         Raises:
@@ -92,7 +92,7 @@ class Headers(dict):
         """
         return self._compile(frmt="bytes")
 
-    def __add__(self, other: Union[dict, Headers]) -> Headers:
+    def __add__(self, other: Union[dict, "Headers"]) -> "Headers":
         """Adds item with passed other and returns new Headers.
 
         Args:
@@ -114,7 +114,7 @@ class Headers(dict):
             copy.update(itemized_values)
             return copy
 
-    def __iadd__(self, other: Union[dict, Headers]) -> Headers:
+    def __iadd__(self, other: Union[dict, "Headers"]) -> "Headers":
         """Adds current headers with passed other and returns self.
 
         Args:
@@ -271,6 +271,3 @@ class FrozenSet(frozenset):
             String representation of the FrozenSet.
         """
         return str({k for k in self})
-
-
-HeadersType = Union[dict, Headers, None]

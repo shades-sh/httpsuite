@@ -1,7 +1,7 @@
 """ Classes for parsing, modifying, and re-compiling HTTP messages. """
 
 import abc
-from typing import Any, NoReturn, Type, Union
+from typing import Any, Type, Union
 
 from toolbox.collections.item import Item, ItemType
 
@@ -48,7 +48,7 @@ class Message(abc.ABC):
     #           other types -> Message
 
     @classmethod
-    def parse(cls: Union["Message", "Response", "Request"], message: Any) -> NoReturn:
+    def parse(cls: Union["Message", "Response", "Request"], message: Any) -> None:
         """Parses a raw HTTP message (in bytes or string) to an object instance of class 'cls'.
 
         Args:
@@ -146,7 +146,7 @@ class Message(abc.ABC):
     # ----- Conversions -----
 
     @abc.abstractmethod
-    def _compile_first_line(self) -> NoReturn:  # pragma: no cover
+    def _compile_first_line(self) -> None:  # pragma: no cover
         """Compiles the first line of the message.
 
         Notes:
