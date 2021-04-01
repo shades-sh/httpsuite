@@ -8,9 +8,8 @@ Versions
 
 ``1.1.0``
 =========
+* Revamped and cleaned the codebase.
 * Update documentation.
-* Added parsing for ``requests`` and ``aiohttp`` objects.
-* Cleaned up code-base.
 
 ``1.0.6``
 =========
