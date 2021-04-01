@@ -1,6 +1,6 @@
 <p align="center">
 
-  <img src="https://i.imgur.com/LnNDqEE.png">
+  <h1>🧳 httpsuite </h1>
   <br><br>
   <a href="https://travis-ci.com/synchronizing/httpsuite">
     <img src="https://travis-ci.com/shades-sh/httpsuite.svg?branch=master">
@@ -23,15 +23,23 @@
 
 ## Installing
 
+To install just `httpsuite`:
+
 ```
 pip install httpsuite
 ```
 
-This package was intentionally built to have no external dependencies outside of the [Python Standard Library](https://docs.python.org/3/library/). If you plan on contribute, then make sure to install the `dev-requirements.txt`.
+If you would like to install `httpsuite` with its addon, [httpsuite-validator](https://github.com/synchronizing/httpsuite-validator):
+
+```
+pip install httpsuite[validator]
+```
+
+This package is depedent on [`toolbox`](https://github.com/shades-st/toolbox). If you plan on contribute, then make sure to install the `dev-requirements.txt`.
 
 ## Documentation
 
-Read the documentation [here](https://shades-sh.github.io/httpsuite/).
+Read the documentation [here](https://synchronizing.github.io/httpsuite/).
 
 ## Use
 

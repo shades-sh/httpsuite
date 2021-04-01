@@ -6,19 +6,10 @@
 
 # -- Path setup --------------------------------------------------------------
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
 import os
 import sys
 
-import sphinx
-
 sys.path.insert(0, os.path.abspath("../.."))
-
-# PyLint complains, but the interpreter should be able to find this on run.
-from httpsuite import __version__
 
 # -- Project information -----------------------------------------------------
 
@@ -26,11 +17,10 @@ project = "httpsuite"
 copyright = "2020, Felipe Faria"
 author = "Felipe Faria"
 
-# The full version, including alpha/beta/rc tags
-release = __version__
-
-
 # -- General configuration ---------------------------------------------------
+
+# Project Name
+html_title = f"{project}"
 
 # Order of docs.
 autodoc_member_order = "bysource"
@@ -41,9 +31,8 @@ autodoc_typehints = "none"
 # Remove module names from class docs.
 add_module_names = False
 
-
-# Show both __init__ and class docs.
-autoclass_content = "both"
+# Show only class docs.
+autoclass_content = "class"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -53,6 +42,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "m2r2",
+    "sphinx_copybutton",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,18 +57,48 @@ exclude_patterns = []
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = "alabaster"
+html_theme = "furo"
 
-html_theme_options = {
-    "description": "Collection of tools to parse, manipulate, and compile raw HTTP messages.",
-    "github_user": "synchronizing",
-    "github_repo": "httpsuite",
-    "github_button": True,
-    "page_width": "90%",
-    "show_powered_by": False,
-}
+html_theme_options = {}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+# https://michaelgoerz.net/notes/extending-sphinx-napoleon-docstring-sections.html
+# -- Extensions to the  Napoleon GoogleDocstring class ---------------------
+
+from sphinx.ext.napoleon.docstring import GoogleDocstring
+
+# first, we define new methods for any new sections and add them to the class
+def parse_keys_section(self, section):
+    return self._format_fields("Keys", self._consume_fields())
+
+
+GoogleDocstring._parse_keys_section = parse_keys_section
+
+
+def parse_attributes_section(self, section):
+    return self._format_fields("Attributes", self._consume_fields())
+
+
+GoogleDocstring._parse_attributes_section = parse_attributes_section
+
+
+def parse_class_attributes_section(self, section):
+    return self._format_fields("Class Attributes", self._consume_fields())
+
+
+GoogleDocstring._parse_class_attributes_section = parse_class_attributes_section
+
+# we now patch the parse method to guarantee that the the above methods are
+# assigned to the _section dict
+def patched_parse(self):
+    self._sections["keys"] = self._parse_keys_section
+    self._sections["class attributes"] = self._parse_class_attributes_section
+    self._unpatched_parse()
+
+
+GoogleDocstring._unpatched_parse = GoogleDocstring._parse
+GoogleDocstring._parse = patched_parse

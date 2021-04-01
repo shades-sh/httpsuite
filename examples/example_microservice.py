@@ -5,7 +5,7 @@ to act as two seperate entities. For the sake of clarity, only the server functi
 prints anything to console. Entities are documented seperately.
 """
 
-from httpsuite import Request, Response, RFC
+from httpsuite import Request, Response
 from multiprocessing import Process
 import socket
 import time

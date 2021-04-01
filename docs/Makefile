@@ -9,10 +9,9 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-# Adds serve ability.
+# Adds serve ability with auto-reload.
 serve:
-	@make html
-	@cd build/html; python -m http.server
+	@sphinx-autobuild -b html source build/html 
 
 .PHONY: help Makefile
 

@@ -1,19 +1,26 @@
 Contents
 ========
 .. toctree::
+
    writeups/Quickstart
-   writeups/Basic Use
-   writeups/Advance Use
 
 .. toctree::
-  :caption: Package
+  :caption: Packages
+  :glob:
 
-  module/core
-  module/helpers
-  module/RFC
+  module/http
+  module/interface
+  module/rfc
+
+.. toctree::
+  :caption: Examples
+
+  writeups/Basic Use
+  writeups/Advance Use
 
 .. toctree::
   :caption: Misc
 
+  misc/Glossary
   misc/Versions
   misc/License

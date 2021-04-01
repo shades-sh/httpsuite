@@ -1,7 +1,8 @@
-from httpsuite import Request, Response, Headers, __ENCODE__
-import pytest
 import json
 
+import pytest
+from httpsuite import Headers, Request, Response
+from toolbox.collections.item import ENCODE
 
 # ====================
 #       Request
@@ -57,7 +58,7 @@ objects_first_line = [request_first_line, response_first_line]
 class Test_message_getters:
     @pytest.mark.parametrize("zipped", zip(objects, objects_raw))
     def test_message_getter_string(self, zipped):
-        assert zipped[0].string == zipped[1].decode(__ENCODE__)
+        assert zipped[0].string == zipped[1].decode(ENCODE)
 
     @pytest.mark.parametrize("zipped", zip(objects, objects_raw))
     def test_message_getter_raw(self, zipped):
@@ -75,7 +76,7 @@ class Test_message_getters:
     @pytest.mark.parametrize("zipped", zip(objects, objects_body))
     def test_message_getter_body(self, zipped):
         assert zipped[0].body == zipped[1]
-        assert zipped[0].body == bytes(zipped[1], __ENCODE__)
+        assert zipped[0].body == bytes(zipped[1], ENCODE)
 
     @pytest.mark.parametrize("message", objects)
     def test_message_getter_protocol(self, message):
@@ -84,31 +85,6 @@ class Test_message_getters:
 
 
 class Test_message_setters:
-    def test_message_setter_response_first_line(self):
-        response.first_line = "HTTP/1.0 100 Continue"
-
-        assert response.protocol == "HTTP/1.0"
-        assert response.protocol == b"HTTP/1.0"
-
-        assert response.status == 100
-        assert response.status == "100"
-        assert response.status == b"100"
-
-        assert response.status_msg == "Continue"
-        assert response.status_msg == b"Continue"
-
-    def test_message_setter_request_first_line(self):
-        request.first_line = "POST /index HTTP/1.0"
-
-        assert request.method == "POST"
-        assert request.method == b"POST"
-
-        assert request.target == "/index"
-        assert request.target == b"/index"
-
-        assert request.protocol == "HTTP/1.0"
-        assert request.protocol == b"HTTP/1.0"
-
     def test_message_setter_request_headers_valid(self):
         request.headers = {}
         request.headers = Headers({})

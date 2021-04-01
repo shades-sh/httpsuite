@@ -1,6 +1,7 @@
-from httpsuite import Response, Headers
 import json
+
 import pytest
+from httpsuite import Headers, Response
 
 
 class Test_response_init_:

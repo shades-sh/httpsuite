@@ -1,5 +1,0 @@
-pytest
-pytest-cov
-sphinx
-coveralls
-m2r2

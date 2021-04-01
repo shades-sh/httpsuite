@@ -1,5 +1,4 @@
-*******
 License
-*******
+========
 
 .. literalinclude:: ../../../LICENSE

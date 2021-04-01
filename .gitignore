@@ -3,10 +3,13 @@ __pycache__
 .pytest_cache
 .coverage
 
+# Python
+.eggs
+
 # Distribution
 /build/
 /dist/
-httpsuite.egg-info/
+*.egg-info/
 
 # OS
 .DS_Store

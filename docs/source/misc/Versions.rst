@@ -1,10 +1,16 @@
-********
+########
 Versions
-********
+########
 
-*********
+******
 ``v1``
-*********
+******
+
+``1.1.0``
+=========
+* Update documentation.
+* Added parsing for ``requests`` and ``aiohttp`` objects.
+* Cleaned up code-base.
 
 ``1.0.6``
 =========

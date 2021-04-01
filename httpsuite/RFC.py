@@ -1,26 +1,17 @@
 # -*- coding: utf-8 -*-
 """ Collection of RFC specifications related to HTTP requests and responses.
 
-Every item in this file is commented with it's specific specification, chapter,
-and section number. To access these specifications, utilize the URL
-https://tools.ietf.org/html/.
-
-Example:
-    If you want to access ``Core Rules`` (``rfc5234#appendix-B.1``), you would
-    append the URL above as follow:
-
-    .. code-block::
-
-        https://tools.ietf.org/html/rfc5234#appendix-B.1
-
+Every item in this file is commented with it's specific specification, chapter, and section number.
+To access these specifications, utilize the URL https://tools.ietf.org/html/<id>.
 """
 
-from .helpers import FrozenSet, TwoWayFrozenDict
+from .interface import FrozenSet, TwoWayFrozenDict
 
 # Core Rules
 # rfc5234#appendix-B.1
 CR = b"\r"
 LF = b"\n"
+
 
 # Protocols
 PROTOCOLS = FrozenSet(
