@@ -12,13 +12,6 @@ class Test_misc_TwoWayFrozenDict:
         assert status._100 == "Continue"
         assert status._100 == b"Continue"
 
-        assert status.get(100) == "Continue"
-        assert status.get(100) == b"Continue"
-        assert status.get("100") == "Continue"
-        assert status.get("100") == b"Continue"
-        assert status.get(b"100") == "Continue"
-        assert status.get(b"100") == b"Continue"
-
         assert status[100] == "Continue"
         assert status[100] == b"Continue"
         assert status["100"] == "Continue"
@@ -29,13 +22,6 @@ class Test_misc_TwoWayFrozenDict:
         assert status.Continue == 100
         assert status.Continue == "100"
         assert status.Continue == b"100"
-
-        assert status.get("Continue") == 100
-        assert status.get(b"Continue") == 100
-        assert status.get("Continue") == "100"
-        assert status.get(b"Continue") == "100"
-        assert status.get("Continue") == b"100"
-        assert status.get(b"Continue") == b"100"
 
         assert status["Continue"] == 100
         assert status[b"Continue"] == 100
@@ -62,9 +48,6 @@ class Test_misc_TwoWayFrozenDict:
     def test_misc_TwoWayFrozenDict_get_not_in(self):
         assert not "NONE" in status
         assert not status.__contains__("NONE")
-
-    def test_misc_TwoWayFrozenDict_str(self):
-        assert "<" not in str(status) and ">" not in str(status)
 
 
 class Test_misc_FrozenSet:

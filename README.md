@@ -28,12 +28,6 @@ To install just `httpsuite`:
 pip install httpsuite
 ```
 
-If you would like to install `httpsuite` with its addon, [httpsuite-validator](https://github.com/synchronizing/httpsuite-validator):
-
-```
-pip install httpsuite[validator]
-```
-
 This package is depedent on [`toolbox`](https://github.com/shades-st/toolbox). If you plan on contribute, then make sure to install the `dev-requirements.txt`.
 
 ## Documentation

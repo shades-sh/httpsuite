@@ -116,11 +116,6 @@ class Test_headers_setattr_and_getattr:
         assert headers[b"Host"] == "github.com"
         assert headers[b"Host"] == b"github.com"
 
-        assert headers.get("Host") == "github.com"
-        assert headers.get("Host") == b"github.com"
-        assert headers.get(b"Host") == "github.com"
-        assert headers.get(b"Host") == b"github.com"
-
     def test_headers_setattr_and_getattr_double_word(self):
         headers = Headers()
         headers.Cache_Control = "no-cache"
@@ -132,11 +127,6 @@ class Test_headers_setattr_and_getattr:
         assert headers["Cache-Control"] == b"no-cache"
         assert headers[b"Cache-Control"] == "no-cache"
         assert headers[b"Cache-Control"] == b"no-cache"
-
-        assert headers.get("Cache-Control") == "no-cache"
-        assert headers.get("Cache-Control") == b"no-cache"
-        assert headers.get(b"Cache-Control") == "no-cache"
-        assert headers.get(b"Cache-Control") == b"no-cache"
 
 
 class Test_headers_str:
