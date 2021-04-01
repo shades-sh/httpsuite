@@ -1,0 +1,33 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Quickstart}{1}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Installing}{1}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Getting Started}{1}{section.1.2}% 
+\contentsline {subsection}{\numberline {1.2.1}\sphinxstyleliteralintitle {\sphinxupquote {\_\_init\_\_()}}}{1}{subsection.1.2.1}% 
+\contentsline {subsection}{\numberline {1.2.2}\sphinxstyleliteralintitle {\sphinxupquote {.parse()}}}{2}{subsection.1.2.2}% 
+\contentsline {subsubsection}{\sphinxstyleliteralintitle {\sphinxupquote {bytes}}}{2}{subsubsection*.3}% 
+\contentsline {section}{\numberline {1.3}Modify}{2}{section.1.3}% 
+\contentsline {section}{\numberline {1.4}Compile}{2}{section.1.4}% 
+\contentsline {subsection}{\numberline {1.4.1}\sphinxstyleliteralintitle {\sphinxupquote {.raw}}}{3}{subsection.1.4.1}% 
+\contentsline {subsection}{\numberline {1.4.2}\sphinxstyleliteralintitle {\sphinxupquote {\_\_str\_\_}}}{3}{subsection.1.4.2}% 
+\contentsline {section}{\numberline {1.5}More}{3}{section.1.5}% 
+\contentsline {chapter}{\numberline {2}http}{5}{chapter.2}% 
+\contentsline {chapter}{\numberline {3}interface}{7}{chapter.3}% 
+\contentsline {chapter}{\numberline {4}Basic Use}{9}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Request}{9}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Response}{10}{section.4.2}% 
+\contentsline {chapter}{\numberline {5}Advance Use}{11}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Sockets}{11}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Microservice}{12}{section.5.2}% 
+\contentsline {chapter}{\numberline {6}Glossary}{15}{chapter.6}% 
+\contentsline {chapter}{\numberline {7}Versions}{17}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}\sphinxstyleliteralintitle {\sphinxupquote {v1}}}{17}{section.7.1}% 
+\contentsline {subsection}{\numberline {7.1.1}\sphinxstyleliteralintitle {\sphinxupquote {1.1.0}}}{17}{subsection.7.1.1}% 
+\contentsline {subsection}{\numberline {7.1.2}\sphinxstyleliteralintitle {\sphinxupquote {1.0.6}}}{17}{subsection.7.1.2}% 
+\contentsline {subsection}{\numberline {7.1.3}\sphinxstyleliteralintitle {\sphinxupquote {1.0.5}}}{17}{subsection.7.1.3}% 
+\contentsline {subsection}{\numberline {7.1.4}\sphinxstyleliteralintitle {\sphinxupquote {1.0.4}}}{17}{subsection.7.1.4}% 
+\contentsline {subsection}{\numberline {7.1.5}\sphinxstyleliteralintitle {\sphinxupquote {1.0.3}}}{17}{subsection.7.1.5}% 
+\contentsline {subsection}{\numberline {7.1.6}\sphinxstyleliteralintitle {\sphinxupquote {1.0.2}}}{18}{subsection.7.1.6}% 
+\contentsline {subsection}{\numberline {7.1.7}\sphinxstyleliteralintitle {\sphinxupquote {1.0.1}}}{18}{subsection.7.1.7}% 
+\contentsline {subsection}{\numberline {7.1.8}\sphinxstyleliteralintitle {\sphinxupquote {1.0.0}}}{18}{subsection.7.1.8}% 
+\contentsline {chapter}{\numberline {8}License}{19}{chapter.8}% 
+\contentsline {chapter}{Index}{21}{section*.8}% 

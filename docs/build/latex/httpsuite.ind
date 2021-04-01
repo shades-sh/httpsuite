@@ -1,0 +1,19 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter C
+  \item \spxentry {compile}, \hyperindexformat{\spxpagem}{15}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry {message}, \hyperindexformat{\spxpagem}{15}
+  \item \spxentry {modify}, \hyperindexformat{\spxpagem}{15}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry {parse}, \hyperindexformat{\spxpagem}{15}
+
+\end{sphinxtheindex}
