@@ -10,14 +10,14 @@ http
 
 -------
 
-.. autoclass:: Message(abc.ABC)
+.. autoclass:: httpsuite.http.Message(abc.ABC)
 
-  .. automethod:: Message.__init__
+  .. automethod:: httpsuite.http.Message.__init__
 
   .. centered::
     **Parse**
   
-  .. method:: Message.parse(message)
+  .. method:: httpsuite.http.Message.parse(message)
 
     Parses the passed ``messaged`` into a ``cls`` instance (either a :class:`Request` or :class:`Response` object).
 
@@ -32,13 +32,13 @@ http
 
   .. note::
 
-    The ``Message.raw()`` function will return the message with proper ``\r\n`` escape characters. It can be
+    The ``httpsuite.http.Message.raw()`` function will return the message with proper ``\r\n`` escape characters. It can be
     used directly with ``sockets`` or any low-level communication system that requires properly formatted HTTP
     messages.
 
-  .. autoproperty:: Message.string
+  .. autoproperty:: httpsuite.http.Message.string
 
-  .. autoproperty:: Message.raw 
+  .. autoproperty:: httpsuite.http.Message.raw 
 
   .. centered::
     **HTTP**
@@ -47,48 +47,48 @@ http
     
     All HTTP properties are saved as an :class:`Item` type. Modification and comparissons can be done on the fly.
 
-  .. autoproperty:: Message.protocol
+  .. autoproperty:: httpsuite.http.Message.protocol
 
-  .. autoproperty:: Message.headers
+  .. autoproperty:: httpsuite.http.Message.headers
 
-  .. autoproperty:: Message.body
+  .. autoproperty:: httpsuite.http.Message.body
 
 -------
 
-.. autoclass:: Request(Message)
+.. autoclass:: httpsuite.http.Request(Message)
 
-  .. automethod:: Request.__init__
+  .. automethod:: httpsuite.http.Request.__init__
 
-  .. automethod:: Request.__str__
+  .. automethod:: httpsuite.http.Request.__str__
 
   .. centered::
     **HTTP**
 
   .. note::
     
-    Note that Request is a child object of a Message and therefore has access to :py:attr:`Message.headers`, 
-    :py:attr:`Message.headers`, and :py:attr:`Message.body`.
+    Note that Request is a child object of a Message and therefore has access to :py:attr:`httpsuite.http.Message.headers`, 
+    :py:attr:`httpsuite.http.Message.headers`, and :py:attr:`httpsuite.http.Message.body`.
 
-  .. autoproperty:: Request.method
+  .. autoproperty:: httpsuite.http.Request.method
 
-  .. autoproperty:: Request.target
+  .. autoproperty:: httpsuite.http.Request.target
 
 -------
 
 .. autoclass:: httpsuite.http.Response
 
-  .. automethod:: Response.__init__
+  .. automethod:: httpsuite.http.Response.__init__
 
-  .. automethod:: Response.__str__
+  .. automethod:: httpsuite.http.Response.__str__
 
   .. centered::
     **HTTP**
 
   .. note::
 
-    Note that Response is a child object of a Message and therefore has access to :py:attr:`Message.headers`, 
-    :py:attr:`Message.headers`, and :py:attr:`Message.body`.
+    Note that Response is a child object of a Message and therefore has access to :py:attr:`httpsuite.http.Message.headers`, 
+    :py:attr:`httpsuite.http.Message.headers`, and :py:attr:`httpsuite.http.Message.body`.
 
-  .. autoproperty:: Response.status
+  .. autoproperty:: httpsuite.http.Response.status
 
-  .. autoproperty:: Response.status_msg
+  .. autoproperty:: httpsuite.http.Response.status_msg
