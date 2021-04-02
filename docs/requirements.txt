@@ -3,3 +3,5 @@ sphinx-copybutton
 sphinx-autobuild
 m2r2
 furo
+
+toolbox
