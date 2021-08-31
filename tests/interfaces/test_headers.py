@@ -1,4 +1,4 @@
-from httpsuite.interface import Headers
+from httpsuite import Headers
 import pytest
 
 dictionaries = [{"str": "str"}, {b"bytes": b"bytes"}]
