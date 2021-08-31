@@ -582,140 +582,6 @@ Lower\sphinxhyphen{}level interfaces that \sphinxcode{\sphinxupquote{httpsuite}}
 
 \bigskip\hrule\bigskip
 
-\index{Headers (class in httpsuite.interface)@\spxentry{Headers}\spxextra{class in httpsuite.interface}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Headers}}}{\emph{\DUrole{n}{headers}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
-\sphinxAtStartPar
-Interface for HTTP/1.x headers object.
-\index{\_\_init\_\_() (Headers method)@\spxentry{\_\_init\_\_()}\spxextra{Headers method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{\DUrole{n}{headers}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
-\sphinxAtStartPar
-Initializes the Headers object.
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{value}} \textendash{} Dictionary, headers, or None object that represents the headers.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\begin{center}\sphinxstylestrong{Properties}
-\end{center}\index{string (Headers property)@\spxentry{string}\spxextra{Headers property}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.string}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{string}}}
-\sphinxAtStartPar
-String representation of the Headers.
-\begin{quote}\begin{description}
-\item[{Returns}] \leavevmode
-\sphinxAtStartPar
-String representation of the Headers.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{raw (Headers property)@\spxentry{raw}\spxextra{Headers property}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.raw}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{raw}}}
-\sphinxAtStartPar
-Bytes representation of the Headers.
-
-\begin{sphinxadmonition}{note}{Note:}
-\sphinxAtStartPar
-This method will return Headers with “rn” escape characters.
-\end{sphinxadmonition}
-\begin{quote}\begin{description}
-\item[{Returns}] \leavevmode
-\sphinxAtStartPar
-Bytes representation of the Headers.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\begin{center}\sphinxstylestrong{Operations}
-\end{center}
-\sphinxAtStartPar
-All of the operations below evaluate to true unless specificed.
-\index{\_\_add\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_add\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.httpsuite.interface.Headers.__add__}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{httpsuite.interface.Headers.}}\sphinxbfcode{\sphinxupquote{\_\_add\_\_}}}{}{}~
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Headers}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hello}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{world}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)} \PYG{o}{+} \PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hey}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{you}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}} \PYG{o}{==} \PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hello}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{world}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hey}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{you}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
-
-\end{fulllineitems}
-
-\index{\_\_iadd\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_iadd\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.httpsuite.interface.Headers.__iadd__}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{httpsuite.interface.Headers.}}\sphinxbfcode{\sphinxupquote{\_\_iadd\_\_}}}{}{}~
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{h} \PYG{o}{=} \PYG{n}{Headers}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hello}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{world}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}
-\PYG{n}{h} \PYG{o}{+}\PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hey}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{you}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}
-\PYG{n}{h} \PYG{o}{==} \PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hello}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{world}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hey}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{you}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
-
-\end{fulllineitems}
-
-
-\sphinxAtStartPar
-Setting and getting attributes automatically uses \sphinxcode{\sphinxupquote{\_}} as the same as \sphinxcode{\sphinxupquote{\sphinxhyphen{}}}.
-\index{\_\_setattr\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_setattr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.httpsuite.interface.Headers.__setattr__}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{httpsuite.interface.Headers.}}\sphinxbfcode{\sphinxupquote{\_\_setattr\_\_}}}{}{}~
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{h} \PYG{o}{=} \PYG{n}{Headers}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hello}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{world}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}
-\PYG{n}{h}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{hello\PYGZhy{}world}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ola mundo}\PYG{l+s+s1}{\PYGZsq{}}
-\end{sphinxVerbatim}
-
-\end{fulllineitems}
-
-\index{\_\_getattr\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_getattr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.httpsuite.interface.Headers.__getattr__}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{httpsuite.interface.Headers.}}\sphinxbfcode{\sphinxupquote{\_\_getattr\_\_}}}{}{}~
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{h} \PYG{o}{=} \PYG{n}{Headers}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hello}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{world}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}
-\PYG{n}{h}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{hello\PYGZhy{}world}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ola mundo}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{h}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{hello\PYGZhy{}world}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{==} \PYG{n}{h}\PYG{o}{.}\PYG{n}{hello\PYGZus{}world}
-\end{sphinxVerbatim}
-
-\end{fulllineitems}
-
-\index{\_\_str\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_str\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.httpsuite.interface.Headers.__str__}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{httpsuite.interface.Headers.}}\sphinxbfcode{\sphinxupquote{\_\_str\_\_}}}{}{}~
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{Headers}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hello}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{world}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} \PYGZsq{}hello: world\PYGZsq{}}
-\end{sphinxVerbatim}
-
-\end{fulllineitems}
-
-\index{\_\_repr\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_repr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.httpsuite.interface.Headers.__repr__}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{httpsuite.interface.Headers.}}\sphinxbfcode{\sphinxupquote{\_\_repr\_\_}}}{}{}~
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n+nb}{repr}\PYG{p}{(}\PYG{n}{Headers}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hello}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{world}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} \PYGZsq{}Headers(hello: world)\PYGZsq{}}
-\end{sphinxVerbatim}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
 
 
 \bigskip\hrule\bigskip
@@ -1275,8 +1141,17 @@ In the context of \sphinxcode{\sphinxupquote{httpsuite}}, parsing means interpre
 \section{\sphinxstyleliteralintitle{\sphinxupquote{v1}}}
 \label{\detokenize{misc/Versions:v1}}
 
-\subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.1.0}}}
+\subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.2.0}}}
 \label{\detokenize{misc/Versions:id1}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Organized project.
+
+\end{itemize}
+
+
+\subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.1.0}}}
+\label{\detokenize{misc/Versions:id2}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Revamped and cleaned the codebase.
@@ -1289,7 +1164,7 @@ Update documentation.
 
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.6}}}
-\label{\detokenize{misc/Versions:id2}}\begin{itemize}
+\label{\detokenize{misc/Versions:id3}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Updated core \sphinxcode{\sphinxupquote{Message}} to include \sphinxcode{\sphinxupquote{protocol}} by default.
@@ -1306,7 +1181,7 @@ Formatted some tests with Black.
 
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.5}}}
-\label{\detokenize{misc/Versions:id3}}\begin{itemize}
+\label{\detokenize{misc/Versions:id4}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Fixed documentation bug relating to \sphinxcode{\sphinxupquote{sphinx\_rtd\_theme}}.
@@ -1315,7 +1190,7 @@ Fixed documentation bug relating to \sphinxcode{\sphinxupquote{sphinx\_rtd\_them
 
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.4}}}
-\label{\detokenize{misc/Versions:id4}}\begin{itemize}
+\label{\detokenize{misc/Versions:id5}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Fixed documentation bug relating to \sphinxcode{\sphinxupquote{m2r}}.
@@ -1324,7 +1199,7 @@ Fixed documentation bug relating to \sphinxcode{\sphinxupquote{m2r}}.
 
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.3}}}
-\label{\detokenize{misc/Versions:id5}}\begin{itemize}
+\label{\detokenize{misc/Versions:id6}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Fixed PyLint errors.
@@ -1341,15 +1216,6 @@ Modified \sphinxcode{\sphinxupquote{Message.\_compile}} input param \sphinxcode{
 
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.2}}}
-\label{\detokenize{misc/Versions:id6}}\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-Cleaned up imports and codebase.
-
-\end{itemize}
-
-
-\subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.1}}}
 \label{\detokenize{misc/Versions:id7}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -1358,8 +1224,17 @@ Cleaned up imports and codebase.
 \end{itemize}
 
 
-\subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.0}}}
+\subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.1}}}
 \label{\detokenize{misc/Versions:id8}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Cleaned up imports and codebase.
+
+\end{itemize}
+
+
+\subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.0}}}
+\label{\detokenize{misc/Versions:id9}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Initial commit.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2021.8.31)  31 AUG 2021 05:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2021.8.31)  31 AUG 2021 06:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -948,20 +948,16 @@ File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 
 ]
 Chapter 3.
-[9]
-LaTeX Font Info:    Font shape `TS1/txtt/m/it' in size <10> not available
-(Font)              Font shape `TS1/txtt/m/sl' tried instead on input line 701.
+[9] [10
 
- [10]
+]
 Chapter 4.
-[11
-
-] [12]
-Underfull \vbox (badness 10000) detected at line 925
+[11] [12]
+Underfull \vbox (badness 10000) detected at line 791
  []
 
 
-Underfull \vbox (badness 10000) detected at line 925
+Underfull \vbox (badness 10000) detected at line 791
  []
 
 [13] [14]
@@ -970,26 +966,29 @@ Chapter 5.
 
 ] [16]
 Chapter 6.
+LaTeX Font Info:    Font shape `TS1/txtt/m/it' in size <10> not available
+(Font)              Font shape `TS1/txtt/m/sl' tried instead on input line 924.
+
 [17
 
 ]
-Overfull \vbox (2.95134pt too high) detected at line 1245
+Overfull \vbox (2.95134pt too high) detected at line 1111
  []
 
 [18]
-Underfull \vbox (badness 10000) detected at line 1245
+Underfull \vbox (badness 10000) detected at line 1111
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1245
+Underfull \vbox (badness 10000) detected at line 1111
  []
 
 [19]
-Underfull \vbox (badness 10000) detected at line 1245
+Underfull \vbox (badness 10000) detected at line 1111
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1245
+Underfull \vbox (badness 10000) detected at line 1111
  []
 
 [20] [21] [22
@@ -1001,7 +1000,7 @@ Chapter 7.
 ]
 Chapter 8.
 LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <14.4> not available
-(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 1275.
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 1141.
 
 [25] [26]
 Chapter 9.
@@ -1015,60 +1014,24 @@ Chapter 9.
 ] (./httpsuite.ind [30
 
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 8--10
-[]\T1/txtt/m/n/10 __add__() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Head-ers.httpsuite.
-interface.Headers
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--12
-[]\T1/txtt/m/n/10 __getattr__() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Head-ers.httpsu
-ite.interface.Headers
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 12--14
-[]\T1/txtt/m/n/10 __iadd__() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Head-ers.httpsuite
-.interface.Headers
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 18--20
-[]\T1/txtt/m/n/10 __repr__() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Head-ers.httpsuite
-.interface.Headers
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
-[]\T1/txtt/m/n/10 __setattr__() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Head-ers.httpsu
-ite.interface.Headers
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 22--24
-[]\T1/txtt/m/n/10 __str__() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Head-ers.httpsuite.
-interface.Headers
- []
-
-[31
+] [31
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1408.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1408.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1283.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1283.
  (./httpsuite.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1408.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1408.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1283.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1283.
 
 Package rerunfilecheck Info: File `httpsuite.out' has not changed.
-(rerunfilecheck)             Checksum: 04C6D4C833E059A579CEB9E5C3335ACE;3116.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1408.
+(rerunfilecheck)             Checksum: 581895AABB4D678B26A41FAA36ED6B61;3203.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1283.
  ) 
 Here is how much of TeX's memory you used:
- 13893 strings out of 494561
- 197160 string characters out of 6177454
- 447746 words of memory out of 5000000
- 17104 multiletter control sequences out of 15000+600000
+ 13876 strings out of 494561
+ 196397 string characters out of 6177454
+ 447447 words of memory out of 5000000
+ 17096 multiletter control sequences out of 15000+600000
  64578 words of font info for 64 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
  37i,11n,48p,789b,667s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1085,10 +1048,10 @@ fonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xt
 t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on httpsuite.pdf (35 pages, 232207 bytes).
+Output written on httpsuite.pdf (35 pages, 229338 bytes).
 PDF statistics:
- 497 PDF objects out of 1000 (max. 8388607)
- 437 compressed objects within 5 object streams
- 107 named destinations out of 1000 (max. 500000)
- 293 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 480 PDF objects out of 1000 (max. 8388607)
+ 420 compressed objects within 5 object streams
+ 98 named destinations out of 1000 (max. 500000)
+ 301 words of extra memory for PDF output out of 10000 (max. 10000000)
 

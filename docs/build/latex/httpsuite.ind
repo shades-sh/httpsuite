@@ -5,22 +5,9 @@
 \let\spxextra \sphinxstyleindexextra
 
   \bigletter {\sphinxsymbolsname}
-  \item \spxentry{\_\_add\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}, 
-		\hyperpage{9}
-  \item \spxentry{\_\_getattr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}, 
-		\hyperpage{10}
-  \item \spxentry{\_\_iadd\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}, 
-		\hyperpage{9}
-  \item \spxentry{\_\_init\_\_()}\spxextra{Headers method}, \hyperpage{9}
   \item \spxentry{\_\_init\_\_()}\spxextra{Message method}, \hyperpage{5}
   \item \spxentry{\_\_init\_\_()}\spxextra{Request method}, \hyperpage{6}
   \item \spxentry{\_\_init\_\_()}\spxextra{Response method}, \hyperpage{6}
-  \item \spxentry{\_\_repr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}, 
-		\hyperpage{10}
-  \item \spxentry{\_\_setattr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}, 
-		\hyperpage{9}
-  \item \spxentry{\_\_str\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}, 
-		\hyperpage{10}
   \item \spxentry{\_\_str\_\_()}\spxextra{Request method}, \hyperpage{6}
   \item \spxentry{\_\_str\_\_()}\spxextra{Response method}, \hyperpage{7}
 
@@ -34,11 +21,10 @@
 
   \indexspace
   \bigletter F
-  \item \spxentry{FrozenSet}\spxextra{class in httpsuite.interface}, \hyperpage{10}
+  \item \spxentry{FrozenSet}\spxextra{class in httpsuite.interface}, \hyperpage{9}
 
   \indexspace
   \bigletter H
-  \item \spxentry{Headers}\spxextra{class in httpsuite.interface}, \hyperpage{9}
   \item \spxentry{headers}\spxextra{Message property}, \hyperpage{6}
   \item \spxentry{httpsuite.http}
     \subitem \spxentry{module}, \hyperpage{5}
@@ -66,7 +52,6 @@
 
   \indexspace
   \bigletter R
-  \item \spxentry{raw}\spxextra{Headers property}, \hyperpage{9}
   \item \spxentry{raw}\spxextra{Message property}, \hyperpage{6}
   \item \spxentry{Request}\spxextra{class in httpsuite.http}, \hyperpage{6}
   \item \spxentry{Response}\spxextra{class in httpsuite.http}, \hyperpage{6}
@@ -75,12 +60,11 @@
   \bigletter S
   \item \spxentry{status}\spxextra{Response property}, \hyperpage{7}
   \item \spxentry{status\_msg}\spxextra{Response property}, \hyperpage{7}
-  \item \spxentry{string}\spxextra{Headers property}, \hyperpage{9}
   \item \spxentry{string}\spxextra{Message property}, \hyperpage{5}
 
   \indexspace
   \bigletter T
   \item \spxentry{target}\spxextra{Request property}, \hyperpage{6}
-  \item \spxentry{TwoWayFrozenDict}\spxextra{class in httpsuite.interface}, \hyperpage{10}
+  \item \spxentry{TwoWayFrozenDict}\spxextra{class in httpsuite.interface}, \hyperpage{9}
 
 \end{sphinxtheindex}

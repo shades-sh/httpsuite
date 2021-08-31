@@ -203,9 +203,176 @@
 <span class="kn">import</span> <span class="nn">abc</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span> <span class="nn">toolbox.collections.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">ItemType</span>
+<span class="kn">from</span> <span class="nn">toolbox.collections.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">ItemType</span><span class="p">,</span> <span class="n">ENCODE</span>
 
-<span class="kn">from</span> <span class="nn">.interface</span> <span class="kn">import</span> <span class="n">Headers</span><span class="p">,</span> <span class="n">HeadersType</span>
+<span class="n">HeadersType</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="s2">"Headers"</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">Headers</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="sd">"""Interface for HTTP/1.x headers object."""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">headers</span><span class="p">:</span> <span class="n">HeadersType</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""Initializes the Headers object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value: Dictionary, headers, or None object that represents the headers.</span>
+<span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="n">headers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">headers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">Item</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Item</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_compile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"bytes"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]:</span>
+        <span class="sa">r</span><span class="sd">"""Compiles the Headers into the passed format.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            When the format is bytes this function will return the headers in bytes</span>
+<span class="sd">            format with the correct HTTP escape characters "\r\n". This does **not**</span>
+<span class="sd">            occur when string is passed as the format (new lines are created instead).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            format: Either bytes or str. Formats the return accordingly to the passed</span>
+<span class="sd">                format.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            String or bytes representation of the Headers.</span>
+<span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="n">frmt</span> <span class="o">==</span> <span class="s2">"bytes"</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">""</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">data</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">"%b: %b</span><span class="se">\r\n</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">frmt</span> <span class="o">==</span> <span class="s2">"string"</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="s2">""</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">data</span> <span class="o">+=</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="se">\r\n</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">HeadersType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="sd">"""Checks the item type to verify it is either Headers or dict.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: Headers is not either dict or headers.</span>
+<span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Headers</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"Headers can only be of type that inherits from 'dict'."</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">"""String representation of the Headers.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            String representation of the Headers.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile</span><span class="p">(</span><span class="n">frmt</span><span class="o">=</span><span class="s2">"string"</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">"""Bytes representation of the Headers.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            This method will return Headers with "\r\n" escape characters.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Bytes representation of the Headers.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile</span><span class="p">(</span><span class="n">frmt</span><span class="o">=</span><span class="s2">"bytes"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="s2">"Headers"</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">"Headers"</span><span class="p">:</span>
+        <span class="sd">"""Adds item with passed other and returns new Headers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            other: Headers or dictionary to be added.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Headers: New resulting Headers object.</span>
+<span class="sd">        """</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Headers</span><span class="p">):</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">current</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Headers</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">itemized_values</span> <span class="o">=</span> <span class="p">{</span><span class="n">Item</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="n">Item</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+            <span class="n">copy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">copy</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">itemized_values</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">copy</span>
+
+    <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="s2">"Headers"</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">"Headers"</span><span class="p">:</span>
+        <span class="sd">"""Adds current headers with passed other and returns self.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            other: Headers or dictionary to be added.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Headers: Self after addition of other to itself.</span>
+<span class="sd">        """</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+        <span class="n">itemized_values</span> <span class="o">=</span> <span class="p">{</span><span class="n">Item</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="n">Item</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">itemized_values</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""Sets a new attribute inside Headers.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            If "_" is present in the key it gets replaced with "-". This is so, example,</span>
+<span class="sd">            "headers.User_Agent" is equivalent to "headers['User-Agent']".</span>
+<span class="sd">        """</span>
+
+        <span class="n">key_mod</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"_"</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">ENCODE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">Item</span><span class="p">(</span><span class="n">key_mod</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Item</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Item</span><span class="p">:</span>
+        <span class="sd">"""Gets attribute inside Headers.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            If "_" is present in the key it gets replaced with "-". This is so the</span>
+<span class="sd">            "headers.User_Agent" is equivalent to "headers['User-Agent']".</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Item corresponding to the passed key.</span>
+<span class="sd">        """</span>
+
+        <span class="n">key_mod</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"_"</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">ENCODE</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">key_mod</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">key_mod</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">"""String representation of the Headers.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            String representation of the Headers.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">string</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""String representation of the Headers.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            String representation of the Headers.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="s2">"Headers(</span><span class="si">{}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="Message"><a class="viewcode-back" href="../../module/http.html#httpsuite.http.Message">[docs]</a><span class="k">class</span> <span class="nc">Message</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>

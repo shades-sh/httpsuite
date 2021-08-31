@@ -6,10 +6,14 @@ Versions
 ``v1``
 ******
 
+``1.2.0``
+=========
+  * Organized project.
+
 ``1.1.0``
 =========
-* Revamped and cleaned the codebase.
-* Update documentation.
+  * Revamped and cleaned the codebase.
+  * Update documentation.
 
 ``1.0.6``
 =========
