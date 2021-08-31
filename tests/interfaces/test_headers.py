@@ -1,4 +1,4 @@
-from httpsuite import Headers
+from httpsuite.interface import Headers
 import pytest
 
 dictionaries = [{"str": "str"}, {b"bytes": b"bytes"}]
@@ -17,12 +17,12 @@ invalid_types = [
 class Test_headers_init:
     @pytest.mark.parametrize("other", valid_types)
     def test_headers_init_valid_types(self, other):
-        headers = Headers(other)
+        Headers(other)
 
     @pytest.mark.parametrize("other", invalid_types)
     def test_headers_init_invalid_types(self, other):
         with pytest.raises(TypeError):
-            headers = Headers(other)
+            Headers(other)
 
 
 class Test_headers_compile_string_raw:

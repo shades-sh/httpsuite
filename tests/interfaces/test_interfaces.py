@@ -1,4 +1,5 @@
-from httpsuite import TwoWayFrozenDict, FrozenSet, Item
+from httpsuite.interface import FrozenSet, TwoWayFrozenDict
+from toolbox import Item
 
 status = TwoWayFrozenDict({100: "Continue"})
 protocols = FrozenSet({"GET"})
@@ -6,7 +7,7 @@ protocols = FrozenSet({"GET"})
 
 class Test_misc_TwoWayFrozenDict:
     def test_misc_TwoWayFrozenDict_init(self):
-        status = TwoWayFrozenDict({100: "Continue"})
+        assert status
 
     def test_misc_TwoWayFrozenDict_get_attribute(self):
         assert status._100 == "Continue"
@@ -46,13 +47,13 @@ class Test_misc_TwoWayFrozenDict:
         assert b"Continue" in status
 
     def test_misc_TwoWayFrozenDict_get_not_in(self):
-        assert not "NONE" in status
+        assert "NONE" not in status
         assert not status.__contains__("NONE")
 
 
 class Test_misc_FrozenSet:
     def test_misc_FrozenSet_init(self):
-        protocols = FrozenSet({"GET"})
+        assert protocols
 
     def test_misc_FrozenSet_str(self):
         protocols_str = protocols.__str__()

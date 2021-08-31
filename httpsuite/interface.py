@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """ Lower-level interfaces that ``httpsuite`` depedents on. """
 
-from typing import Iterable, Union
+from typing import Union
 
 from toolbox.collections.item import ENCODE, Item
 from toolbox.collections.mapping import (
@@ -40,12 +40,13 @@ class Headers(dict):
         r"""Compiles the Headers into the passed format.
 
         Notes:
-            When the format is bytes this function will return the headers in bytes format with the
-            correct HTTP escape characters "\r\n". This does **not** occur when string is passed as
-            the format (new lines are created instead).
+            When the format is bytes this function will return the headers in bytes
+            format with the correct HTTP escape characters "\r\n". This does **not**
+            occur when string is passed as the format (new lines are created instead).
 
         Args:
-            format: Either bytes or str. Formats the return accordingly to the passed format.
+            format: Either bytes or str. Formats the return accordingly to the passed
+                format.
 
         Returns:
             String or bytes representation of the Headers.
@@ -192,13 +193,13 @@ class TwoWayFrozenDict(
     initilization, and provides accessability via key and value.
 
     Note:
-        All the keys and values inside TwoWayFrozenDict are Item objects, which allows easy
-        comparissions to check if an item is inside the TwoWayFrozenDict mapping.
+        All the keys and values inside TwoWayFrozenDict are Item objects, which allows
+        easy comparissions to check if an item is inside the TwoWayFrozenDict mapping.
     """
 
 
 class FrozenSet(frozenset):
-    """A frozen set with pretty-print. """
+    """A frozen set with pretty-print."""
 
     def __str__(self):
         """String representation of the FrozenSet.

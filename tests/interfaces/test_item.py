@@ -1,4 +1,9 @@
-from httpsuite import Item
+"""
+This test file ensures that toolbox.Item is properly implemented for httpsuite's needs.
+Note that the author of httpsuite is the same as toolbox.
+"""
+
+from toolbox import Item
 import pytest
 
 items = Item("str"), Item(b"bytes"), Item(200)

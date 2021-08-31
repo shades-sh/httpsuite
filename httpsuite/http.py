@@ -10,15 +10,14 @@ from .interface import Headers, HeadersType
 
 
 class Message(abc.ABC):
-    """Abstract class that contains shared methods and properties accessible by
-    both the Request and Response classes.
+    """Abstract class that contains shared methods and properties accessible by both the
+    Request and Response classes.
 
     Warning:
-        This class is not intended to be used by itself. Note that Message is
-        an abstraction that represents the shared properties and methods of
-        both a Request and Response instance. All functions displayed in
-        Message are, therefore, accessible by both the Request and Response
-        classes.
+        This class is not intended to be used by itself. Note that Message is an
+        abstraction that represents the shared properties and methods of both a Request
+        and Response instance. All functions displayed in Message are, therefore,
+        accessible by both the Request and Response classes.
     """
 
     __slots__ = ["_protocol", "_headers", "_body", "_first_line"]
@@ -29,7 +28,8 @@ class Message(abc.ABC):
         """Initializes an HTTP Message.
 
         Args:
-            protocol: "<major>.<minor>" numbering scheme to indicate versions of the protocol.
+            protocol: "<major>.<minor>" numbering scheme to indicate versions of the
+                protocol.
             headers: Collection of case-insensitive name followed by a colon (:).
             body: Data associated with the message.
         """
@@ -53,7 +53,8 @@ class Message(abc.ABC):
         """Parses a raw HTTP message (in bytes or string) to an object instance of class 'cls'.
 
         Args:
-            message: The primative or object to convert into a Request or Response object.
+            message: The primative or object to convert into a Request or Response
+                object.
 
         Returns:
             An initialized object of class 'cls'.
@@ -151,8 +152,8 @@ class Message(abc.ABC):
         """Compiles the first line of the message.
 
         Notes:
-            Sets self._first_line to self.protocol; self.method or self.status; self.target or
-            self.status_msg.
+            Sets self._first_line to self.protocol; self.method or self.status;
+            self.target or self.status_msg.
         """
         raise NotImplementedError
 
@@ -253,7 +254,8 @@ class Request(Message):
         Args:
             method: Indicates the desired action on the server's resource.
             target: Resource location in the server for which the client is requesting.
-            protocol: "<major>.<minor>" numbering scheme to indicate versions of the protocol.
+            protocol: "<major>.<minor>" numbering scheme to indicate versions of the
+                protocol.
             headers: Collection of case-insensitive name followed by a colon (:).
             body: Data associated with the message.
         """
@@ -333,7 +335,8 @@ class Response(Message):
         """Python object representation of an HTTP/1.x response.
 
         Args:
-            protocol: "<major>.<minor>" numbering scheme to indicate versions of the protocol.
+            protocol: "<major>.<minor>" numbering scheme to indicate versions of the
+                protocol.
             status: Numberical value designating a specific return value.
             status_msg: Message related to the status code.
             headers: Collection of case-insensitive name followed by a colon (:).
