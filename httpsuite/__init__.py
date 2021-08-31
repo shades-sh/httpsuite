@@ -1,2 +1,1 @@
-from .http import Request, Response
-from .interface import Headers
+from .http import Headers, Request, Response
