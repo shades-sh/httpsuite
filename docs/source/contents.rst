@@ -10,7 +10,7 @@ Contents
 
   module/http
   module/interface
-  module/rfc
+  module/RFC
 
 .. toctree::
   :caption: Examples
