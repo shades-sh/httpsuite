@@ -2,51 +2,46 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Basic Use" href="../writeups/Basic%20Use.html" /><link rel="prev" title="http" href="http.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="rfc" href="RFC.html" /><link rel="prev" title="http" href="http.html" />
 
-    <meta name="generator" content="sphinx-3.4.1, furo 2021.03.20.beta30"/>
+    <meta name="generator" content="sphinx-4.1.2, furo 2021.08.17.beta43"/>
         <title>interface - httpsuite</title>
-      <link rel="stylesheet" href="../_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
-    <link rel="stylesheet" href="../_static/pygments.css">
-    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=910ac4ccc9d7c023151c34010d7b500fb9777a51" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    
     
 
 
 <style>
-  :root {
+  body {
     --color-code-background: #f8f8f8;
   --color-code-foreground: black;
   
   }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
   @media (prefers-color-scheme: dark) {
-    :root {
+    body:not([data-theme="light"]) {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
   }
-
-  /* For allowing end-user-specific overrides */
-  .override-light {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
-  
-  }
-  .override-dark {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-</style><link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
-  <body dir="">
+</style>
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css"></head>
+  <body>
     
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
       <line x1="4" y1="6" x2="20" y2="6" />
       <line x1="10" y1="12" x2="20" y2="12" />
       <line x1="6" y1="18" x2="20" y2="18" />
@@ -54,9 +49,8 @@
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="feather feather-menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
       <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -64,18 +58,57 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="feather feather-chevron-right">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
     </svg>
   </symbol>
 </svg>
 
 <input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
 <input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation"></label>
-<label class="overlay toc-overlay" for="__toc"></label>
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
 
 
 
@@ -83,6 +116,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
         <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
       </label>
     </div>
@@ -90,7 +124,16 @@
       <a href="../index.html"><div class="brand">httpsuite</div></a>
     </div>
     <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
       <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
@@ -103,25 +146,27 @@
   
   <span class="sidebar-brand-text">httpsuite</span>
   
-</a><form class="sidebar-search-container" method="get" action="../search.html">
-  <input class="sidebar-search" placeholder=Search name="q">
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
-</form><div class="sidebar-scroll"><div class="sidebar-tree">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
 <li class="toctree-l1"><a class="reference internal" href="../writeups/Quickstart.html">Quickstart</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Packages</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="http.html">http</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RFC.html">rfc</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../writeups/Basic%20Use.html">Basic Use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../writeups/Advance%20Use.html">Advance Use</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Misc</span></p>
+<p class="caption" role="heading"><span class="caption-text">Misc</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../misc/Glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc/Versions.html">Versions</a></li>
@@ -134,12 +179,23 @@
       
     </div>
   </aside>
-  <main class="main">
+  <div class="main">
     <div class="content">
       <article role="main">
-        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
-          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-        </label>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
         <div class="section" id="interface">
 <h1>interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">httpsuite.interface</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Headers</span><span class="p">,</span> <span class="n">TwoWayFrozenDict</span><span class="p">,</span> <span class="n">FrozenSet</span>
@@ -148,12 +204,12 @@
 <span class="target" id="module-httpsuite.interface"></span><p>Lower-level interfaces that <code class="docutils literal notranslate"><span class="pre">httpsuite</span></code> depedents on.</p>
 <hr class="docutils"/>
 <dl class="py class">
-<dt id="httpsuite.interface.Headers">
-<em class="property">class </em><code class="sig-name descname">Headers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">headers</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/httpsuite/interface.html#Headers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#httpsuite.interface.Headers" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.Headers">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Headers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/httpsuite/interface.html#Headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#httpsuite.interface.Headers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface for HTTP/1.x headers object.</p>
 <dl class="py method">
-<dt id="httpsuite.interface.Headers.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">headers</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/httpsuite/interface.html#Headers.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#httpsuite.interface.Headers.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/httpsuite/interface.html#Headers.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#httpsuite.interface.Headers.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes the Headers object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -162,9 +218,9 @@
 </dl>
 </dd></dl>
 <p class="centered">
-<strong><strong>Properties</strong></strong></p><dl class="py method">
-<dt id="httpsuite.interface.Headers.string">
-<em class="property">property </em><code class="sig-name descname">string</code><a class="headerlink" href="#httpsuite.interface.Headers.string" title="Permalink to this definition">¶</a></dt>
+<strong><strong>Properties</strong></strong></p><dl class="py property">
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.string">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">string</span></span><a class="headerlink" href="#httpsuite.interface.Headers.string" title="Permalink to this definition">¶</a></dt>
 <dd><p>String representation of the Headers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -172,9 +228,9 @@
 </dd>
 </dl>
 </dd></dl>
-<dl class="py method">
-<dt id="httpsuite.interface.Headers.raw">
-<em class="property">property </em><code class="sig-name descname">raw</code><a class="headerlink" href="#httpsuite.interface.Headers.raw" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.raw">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">raw</span></span><a class="headerlink" href="#httpsuite.interface.Headers.raw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bytes representation of the Headers.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -189,15 +245,15 @@
 <p class="centered">
 <strong><strong>Operations</strong></strong></p><p>All of the operations below evaluate to true unless specificed.</p>
 <dl class="py method">
-<dt id="httpsuite.interface.Headers.httpsuite.interface.Headers.__add__">
-<code class="sig-prename descclassname">httpsuite.interface.Headers.</code><code class="sig-name descname">__add__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__add__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.httpsuite.interface.Headers.__add__">
+<span class="sig-prename descclassname"><span class="pre">httpsuite.interface.Headers.</span></span><span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__add__" title="Permalink to this definition">¶</a></dt>
 <dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Headers</span><span class="p">({</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">})</span> <span class="o">+</span> <span class="p">{</span><span class="s2">"hey"</span><span class="p">:</span> <span class="s2">"you"</span><span class="p">}</span> <span class="o">==</span> <span class="p">{</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">,</span> <span class="s2">"hey"</span><span class="p">:</span> <span class="s2">"you"</span><span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py method">
-<dt id="httpsuite.interface.Headers.httpsuite.interface.Headers.__iadd__">
-<code class="sig-prename descclassname">httpsuite.interface.Headers.</code><code class="sig-name descname">__iadd__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__iadd__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.httpsuite.interface.Headers.__iadd__">
+<span class="sig-prename descclassname"><span class="pre">httpsuite.interface.Headers.</span></span><span class="sig-name descname"><span class="pre">__iadd__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__iadd__" title="Permalink to this definition">¶</a></dt>
 <dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">Headers</span><span class="p">({</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">})</span>
 <span class="n">h</span> <span class="o">+=</span> <span class="p">{</span><span class="s2">"hey"</span><span class="p">:</span> <span class="s2">"you"</span><span class="p">}</span>
 <span class="n">h</span> <span class="o">==</span> <span class="p">{</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">,</span> <span class="s2">"hey"</span><span class="p">:</span> <span class="s2">"you"</span><span class="p">}</span>
@@ -206,16 +262,16 @@
 </dd></dl>
 <p>Setting and getting attributes automatically uses <code class="docutils literal notranslate"><span class="pre">_</span></code> as the same as <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p>
 <dl class="py method">
-<dt id="httpsuite.interface.Headers.httpsuite.interface.Headers.__setattr__">
-<code class="sig-prename descclassname">httpsuite.interface.Headers.</code><code class="sig-name descname">__setattr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__setattr__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.httpsuite.interface.Headers.__setattr__">
+<span class="sig-prename descclassname"><span class="pre">httpsuite.interface.Headers.</span></span><span class="sig-name descname"><span class="pre">__setattr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__setattr__" title="Permalink to this definition">¶</a></dt>
 <dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">Headers</span><span class="p">({</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">})</span>
 <span class="n">h</span><span class="p">[</span><span class="s1">'hello-world'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'ola mundo'</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py method">
-<dt id="httpsuite.interface.Headers.httpsuite.interface.Headers.__getattr__">
-<code class="sig-prename descclassname">httpsuite.interface.Headers.</code><code class="sig-name descname">__getattr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__getattr__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.httpsuite.interface.Headers.__getattr__">
+<span class="sig-prename descclassname"><span class="pre">httpsuite.interface.Headers.</span></span><span class="sig-name descname"><span class="pre">__getattr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__getattr__" title="Permalink to this definition">¶</a></dt>
 <dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">Headers</span><span class="p">({</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">})</span>
 <span class="n">h</span><span class="p">[</span><span class="s1">'hello-world'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'ola mundo'</span>
 <span class="n">h</span><span class="p">[</span><span class="s1">'hello-world'</span><span class="p">]</span> <span class="o">==</span> <span class="n">h</span><span class="o">.</span><span class="n">hello_world</span>
@@ -223,15 +279,15 @@
 </div>
 </dd></dl>
 <dl class="py method">
-<dt id="httpsuite.interface.Headers.httpsuite.interface.Headers.__str__">
-<code class="sig-prename descclassname">httpsuite.interface.Headers.</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__str__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.httpsuite.interface.Headers.__str__">
+<span class="sig-prename descclassname"><span class="pre">httpsuite.interface.Headers.</span></span><span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">Headers</span><span class="p">({</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">}))</span> <span class="c1"># 'hello: world'</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py method">
-<dt id="httpsuite.interface.Headers.httpsuite.interface.Headers.__repr__">
-<code class="sig-prename descclassname">httpsuite.interface.Headers.</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__repr__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.Headers.httpsuite.interface.Headers.__repr__">
+<span class="sig-prename descclassname"><span class="pre">httpsuite.interface.Headers.</span></span><span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#httpsuite.interface.Headers.httpsuite.interface.Headers.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">repr</span><span class="p">(</span><span class="n">Headers</span><span class="p">({</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"world"</span><span class="p">}))</span> <span class="c1"># 'Headers(hello: world)'</span>
 </pre></div>
 </div>
@@ -239,20 +295,20 @@
 </dd></dl>
 <hr class="docutils"/>
 <dl class="py class">
-<dt id="httpsuite.interface.TwoWayFrozenDict">
-<em class="property">class </em><code class="sig-name descname">TwoWayFrozenDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/httpsuite/interface.html#TwoWayFrozenDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#httpsuite.interface.TwoWayFrozenDict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.TwoWayFrozenDict">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">TwoWayFrozenDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/httpsuite/interface.html#TwoWayFrozenDict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#httpsuite.interface.TwoWayFrozenDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>A frozen dictionary with two-way capabilities. Locks a dictionary in place after
 initilization, and provides accessability via key and value.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All the keys and values inside TwoWayFrozenDict are Item objects, which allows easy
-comparissions to check if an item is inside the TwoWayFrozenDict mapping.</p>
+<p>All the keys and values inside TwoWayFrozenDict are Item objects, which allows
+easy comparissions to check if an item is inside the TwoWayFrozenDict mapping.</p>
 </div>
 </dd></dl>
 <hr class="docutils"/>
 <dl class="py class">
-<dt id="httpsuite.interface.FrozenSet">
-<em class="property">class </em><code class="sig-name descname">FrozenSet</code><a class="reference internal" href="../_modules/httpsuite/interface.html#FrozenSet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#httpsuite.interface.FrozenSet" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="httpsuite.interface.FrozenSet">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">FrozenSet</span></span><a class="reference internal" href="../_modules/httpsuite/interface.html#FrozenSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#httpsuite.interface.FrozenSet" title="Permalink to this definition">¶</a></dt>
 <dd><p>A frozen set with pretty-print.</p>
 </dd></dl>
 </div>
@@ -261,12 +317,12 @@ comparissions to check if an item is inside the TwoWayFrozenDict mapping.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../writeups/Basic%20Use.html">
+          <a class="next-page" href="RFC.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Basic Use</div>
+                <div class="title">rfc</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -304,13 +360,13 @@ comparissions to check if an item is inside the TwoWayFrozenDict mapping.</p>
       
       
     </aside>
-  </main>
-</div>
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+    </body>
 </html>

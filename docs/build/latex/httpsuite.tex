@@ -4,6 +4,11 @@
 \ifdefined\pdfpxdimen
    \let\sphinxpxdimen\pdfpxdimen\else\newdimen\sphinxpxdimen
 \fi \sphinxpxdimen=.75bp\relax
+\ifdefined\pdfimageresolution
+    \pdfimageresolution= \numexpr \dimexpr1in\relax/\sphinxpxdimen\relax
+\fi
+%% let collapsable pdf bookmarks panel have high depth per default
+\PassOptionsToPackage{bookmarksdepth=5}{hyperref}
 
 \PassOptionsToPackage{warn}{textcomp}
 \usepackage[utf8]{inputenc}
@@ -28,34 +33,16 @@
 
 
 
-\usepackage{times}
-\expandafter\ifx\csname T@LGR\endcsname\relax
-\else
-% LGR was declared as font encoding
-  \substitutefont{LGR}{\rmdefault}{cmr}
-  \substitutefont{LGR}{\sfdefault}{cmss}
-  \substitutefont{LGR}{\ttdefault}{cmtt}
-\fi
-\expandafter\ifx\csname T@X2\endcsname\relax
-  \expandafter\ifx\csname T@T2A\endcsname\relax
-  \else
-  % T2A was declared as font encoding
-    \substitutefont{T2A}{\rmdefault}{cmr}
-    \substitutefont{T2A}{\sfdefault}{cmss}
-    \substitutefont{T2A}{\ttdefault}{cmtt}
-  \fi
-\else
-% X2 was declared as font encoding
-  \substitutefont{X2}{\rmdefault}{cmr}
-  \substitutefont{X2}{\sfdefault}{cmss}
-  \substitutefont{X2}{\ttdefault}{cmtt}
-\fi
+\usepackage{tgtermes}
+\usepackage{tgheros}
+\renewcommand{\ttdefault}{txtt}
+
 
 
 \usepackage[Bjarne]{fncychap}
 \usepackage{sphinx}
 
-\fvset{fontsize=\small}
+\fvset{fontsize=auto}
 \usepackage{geometry}
 
 
@@ -73,7 +60,7 @@
 
 
 \title{httpsuite}
-\date{Apr 02, 2021}
+\date{Aug 31, 2021}
 \release{}
 \author{Felipe Faria}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -95,6 +82,7 @@
 
 \section{Installing}
 \label{\detokenize{writeups/Quickstart:installing}}
+\sphinxAtStartPar
 To get started with \sphinxcode{\sphinxupquote{httpsuite}}, install the latest stable release from \sphinxhref{https://pypi.org/project/httpsuite/}{PyPi}:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -104,12 +92,14 @@ pip install httpsuite
 
 \section{Getting Started}
 \label{\detokenize{writeups/Quickstart:getting-started}}
+\sphinxAtStartPar
 There are two principal abstractions to be aware of it in \sphinxcode{\sphinxupquote{httpsuite}}, \sphinxcode{\sphinxupquote{Request}} and \sphinxcode{\sphinxupquote{Response}}.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k+kn}{from} \PYG{n+nn}{httpsuite} \PYG{k+kn}{import} \PYG{n}{Request}\PYG{p}{,} \PYG{n}{Response}
 \end{sphinxVerbatim}
 
+\sphinxAtStartPar
 These classes represent an HTTP/1.x request and response message, and offer a high\sphinxhyphen{}level API to {\hyperref[\detokenize{misc/Glossary:term-modify}]{\sphinxtermref{\DUrole{xref,std,std-term}{modify}}}},
 {\hyperref[\detokenize{misc/Glossary:term-compile}]{\sphinxtermref{\DUrole{xref,std,std-term}{compile}}}}, and {\hyperref[\detokenize{misc/Glossary:term-parse}]{\sphinxtermref{\DUrole{xref,std,std-term}{parse}}}} them. The \sphinxcode{\sphinxupquote{Request}} and \sphinxcode{\sphinxupquote{Response}} can be initialized via two different
 methods.
@@ -117,6 +107,7 @@ methods.
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{\_\_init\_\_()}}}
 \label{\detokenize{writeups/Quickstart:init}}
+\sphinxAtStartPar
 Create a \sphinxcode{\sphinxupquote{Request}} or \sphinxcode{\sphinxupquote{Response}} object with the given parameter.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -142,11 +133,13 @@ Create a \sphinxcode{\sphinxupquote{Request}} or \sphinxcode{\sphinxupquote{Resp
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{.parse()}}}
 \label{\detokenize{writeups/Quickstart:parse}}
+\sphinxAtStartPar
 Or, parse from \sphinxtitleref{bytes} to create a new \sphinxcode{\sphinxupquote{Request}} or \sphinxcode{\sphinxupquote{Response}} with the given details.
 
 
 \subsubsection{\sphinxstyleliteralintitle{\sphinxupquote{bytes}}}
 \label{\detokenize{writeups/Quickstart:bytes}}
+\sphinxAtStartPar
 Most useful when using socket connections.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -159,6 +152,7 @@ Most useful when using socket connections.
 
 \section{Modify}
 \label{\detokenize{writeups/Quickstart:modify}}
+\sphinxAtStartPar
 The next probable step after initializing a \sphinxcode{\sphinxupquote{Request}} or \sphinxcode{\sphinxupquote{Response}} object is to {\hyperref[\detokenize{misc/Glossary:term-modify}]{\sphinxtermref{\DUrole{xref,std,std-term}{modify}}}} and
 {\hyperref[\detokenize{misc/Glossary:term-compile}]{\sphinxtermref{\DUrole{xref,std,std-term}{compile}}}}. Object modification is done as one would expect.
 
@@ -168,6 +162,7 @@ The next probable step after initializing a \sphinxcode{\sphinxupquote{Request}}
 \PYG{n}{response}\PYG{o}{.}\PYG{n}{status\PYGZus{}msg} \PYG{o}{=} \PYG{l+s+sa}{b}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Continue}\PYG{l+s+s2}{\PYGZdq{}}
 \end{sphinxVerbatim}
 
+\sphinxAtStartPar
 Notice that setting object properties is type\sphinxhyphen{}agnostic. Properties can be modified to either \sphinxcode{\sphinxupquote{int}}, \sphinxcode{\sphinxupquote{str}},
 or \sphinxcode{\sphinxupquote{bytes}} objects. Internally, \sphinxcode{\sphinxupquote{httpsuite}} automatically converts every property of a \sphinxcode{\sphinxupquote{request}} or
 \sphinxcode{\sphinxupquote{response}} into an \sphinxcode{\sphinxupquote{Item}}, which is a low\sphinxhyphen{}level interface to allow easy setting and comparissons on the
@@ -182,6 +177,7 @@ fly. Similarly to setting properties, one can be assured of type\sphinxhyphen{}a
 
 \section{Compile}
 \label{\detokenize{writeups/Quickstart:compile}}
+\sphinxAtStartPar
 After modifying a message compilation allows the \sphinxcode{\sphinxupquote{Request}} and \sphinxcode{\sphinxupquote{Response}} objects to be compiled into
 less maluable yet useful types. Those types being \sphinxcode{\sphinxupquote{bytes}} or \sphinxcode{\sphinxupquote{str}}.
 
@@ -207,6 +203,7 @@ less maluable yet useful types. Those types being \sphinxcode{\sphinxupquote{byt
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{.raw}}}
 \label{\detokenize{writeups/Quickstart:raw}}
+\sphinxAtStartPar
 Useful to use with sockets.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -220,6 +217,7 @@ Useful to use with sockets.
 
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{\_\_str\_\_}}}
 \label{\detokenize{writeups/Quickstart:str}}
+\sphinxAtStartPar
 Pretty print of the object.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -238,6 +236,7 @@ Pretty print of the object.
 
 \section{More}
 \label{\detokenize{writeups/Quickstart:more}}
+\sphinxAtStartPar
 If you finished this guide and want to continue learning more you can do so by reading the package’s documentation found
 on the left menu.
 
@@ -248,6 +247,7 @@ on the left menu.
 \PYG{k+kn}{from} \PYG{n+nn}{httpsuite}\PYG{n+nn}{.}\PYG{n+nn}{http} \PYG{k+kn}{import} \PYG{n}{Message}\PYG{p}{,} \PYG{n}{Request}\PYG{p}{,} \PYG{n}{Response}
 \end{sphinxVerbatim}
 \phantomsection\label{\detokenize{module/http:module-httpsuite.http}}\index{module@\spxentry{module}!httpsuite.http@\spxentry{httpsuite.http}}\index{httpsuite.http@\spxentry{httpsuite.http}!module@\spxentry{module}}
+\sphinxAtStartPar
 Classes for parsing, modifying, and re\sphinxhyphen{}compiling HTTP messages.
 
 
@@ -257,30 +257,36 @@ Classes for parsing, modifying, and re\sphinxhyphen{}compiling HTTP messages.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Message}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Message}}}{\emph{abc.ABC}}{}
-Abstract class that contains shared methods and properties accessible by
-both the Request and Response classes.
+\sphinxAtStartPar
+Abstract class that contains shared methods and properties accessible by both the
+Request and Response classes.
 
 \begin{sphinxadmonition}{warning}{Warning:}
-This class is not intended to be used by itself. Note that Message is
-an abstraction that represents the shared properties and methods of
-both a Request and Response instance. All functions displayed in
-Message are, therefore, accessible by both the Request and Response
-classes.
+\sphinxAtStartPar
+This class is not intended to be used by itself. Note that Message is an
+abstraction that represents the shared properties and methods of both a Request
+and Response instance. All functions displayed in Message are, therefore,
+accessible by both the Request and Response classes.
 \end{sphinxadmonition}
 \index{\_\_init\_\_() (Message method)@\spxentry{\_\_init\_\_()}\spxextra{Message method}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Message.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{\DUrole{n}{protocol}}, \emph{\DUrole{n}{headers}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{body}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\sphinxAtStartPar
 Initializes an HTTP Message.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
 \item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{protocol}} \textendash{} “\textless{}major\textgreater{}.\textless{}minor\textgreater{}” numbering scheme to indicate versions of the protocol.
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{protocol}} \textendash{} “\textless{}major\textgreater{}.\textless{}minor\textgreater{}” numbering scheme to indicate versions of the
+protocol.
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{headers}} \textendash{} Collection of case\sphinxhyphen{}insensitive name followed by a colon (:).
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{body}} \textendash{} Data associated with the message.
 
 \end{itemize}
@@ -295,15 +301,19 @@ Initializes an HTTP Message.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Message.httpsuite.http.Message.parse}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{httpsuite.http.Message.}}\sphinxbfcode{\sphinxupquote{parse}}}{\emph{\DUrole{n}{message}}}{}
+\sphinxAtStartPar
 Parses the passed \sphinxcode{\sphinxupquote{messaged}} into a \sphinxcode{\sphinxupquote{cls}} instance (either a {\hyperref[\detokenize{module/http:httpsuite.http.Request}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{Request}}}}} or {\hyperref[\detokenize{module/http:httpsuite.http.Response}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{Response}}}}} object).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{message}} \textendash{} The primative or object to convert into a Request or Response object.
 
 \item[{Returns}] \leavevmode
+\sphinxAtStartPar
 An initialized object of class \sphinxcode{\sphinxupquote{cls}}.
 
 \item[{Raises}] \leavevmode
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{RequiredAwait}} \textendash{} Attempting to parse asynchronous object without ‘await’ statement.
 
 \end{description}\end{quote}
@@ -314,30 +324,35 @@ An initialized object of class \sphinxcode{\sphinxupquote{cls}}.
 \begin{center}\sphinxstylestrong{Properties}
 \end{center}
 \begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
 The \sphinxcode{\sphinxupquote{httpsuite.http.Message.raw()}} function will return the message with proper \sphinxcode{\sphinxupquote{\textbackslash{}r\textbackslash{}n}} escape characters. It can be
 used directly with \sphinxcode{\sphinxupquote{sockets}} or any low\sphinxhyphen{}level communication system that requires properly formatted HTTP
 messages.
 \end{sphinxadmonition}
-\index{string() (Message property)@\spxentry{string()}\spxextra{Message property}}
+\index{string (Message property)@\spxentry{string}\spxextra{Message property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Message.string}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{string}}}
+\sphinxAtStartPar
 String representation of the Message.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
+\sphinxAtStartPar
 Message as a string, without any arrows.
 
 \end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{raw() (Message property)@\spxentry{raw()}\spxextra{Message property}}
+\index{raw (Message property)@\spxentry{raw}\spxextra{Message property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Message.raw}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{raw}}}
+\sphinxAtStartPar
 Bytes representation of the Message.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
+\sphinxAtStartPar
 Message as a bytes, without arrows, properly escaped.
 
 \end{description}\end{quote}
@@ -348,28 +363,32 @@ Message as a bytes, without arrows, properly escaped.
 \begin{center}\sphinxstylestrong{HTTP}
 \end{center}
 \begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
 All HTTP properties are saved as an \sphinxcode{\sphinxupquote{Item}} type. Modification and comparissons can be done on the fly.
 \end{sphinxadmonition}
-\index{protocol() (Message property)@\spxentry{protocol()}\spxextra{Message property}}
+\index{protocol (Message property)@\spxentry{protocol}\spxextra{Message property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Message.protocol}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{protocol}}}
+\sphinxAtStartPar
 Protocol of the message.
 
 \end{fulllineitems}
 
-\index{headers() (Message property)@\spxentry{headers()}\spxextra{Message property}}
+\index{headers (Message property)@\spxentry{headers}\spxextra{Message property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Message.headers}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{headers}}}
+\sphinxAtStartPar
 Headers of the message.
 
 \end{fulllineitems}
 
-\index{body() (Message property)@\spxentry{body()}\spxextra{Message property}}
+\index{body (Message property)@\spxentry{body}\spxextra{Message property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Message.body}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{body}}}
+\sphinxAtStartPar
 Body of the message.
 
 \end{fulllineitems}
@@ -388,22 +407,29 @@ Body of the message.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Request.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{\DUrole{n}{method}}, \emph{\DUrole{n}{target}}, \emph{\DUrole{n}{protocol}}, \emph{\DUrole{n}{headers}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{body}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\sphinxAtStartPar
 Python object representation of an HTTP/1.x request.”
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{method}} \textendash{} Indicates the desired action on the server’s resource.
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{target}} \textendash{} Resource location in the server for which the client is requesting.
 
 \item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{protocol}} \textendash{} “\textless{}major\textgreater{}.\textless{}minor\textgreater{}” numbering scheme to indicate versions of the protocol.
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{protocol}} \textendash{} “\textless{}major\textgreater{}.\textless{}minor\textgreater{}” numbering scheme to indicate versions of the
+protocol.
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{headers}} \textendash{} Collection of case\sphinxhyphen{}insensitive name followed by a colon (:).
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{body}} \textendash{} Data associated with the message.
 
 \end{itemize}
@@ -416,9 +442,11 @@ Python object representation of an HTTP/1.x request.”
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Request.__str__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_str\_\_}}}{}{}
+\sphinxAtStartPar
 String representation of the Request.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
+\sphinxAtStartPar
 Representation of the Request object with pretty\sphinxhyphen{}print (\(\rightarrow\)) arrows.
 
 \end{description}\end{quote}
@@ -429,21 +457,24 @@ Representation of the Request object with pretty\sphinxhyphen{}print (\(\rightar
 \begin{center}\sphinxstylestrong{HTTP}
 \end{center}
 \begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
 Note that Request is a child object of a Message and therefore has access to {\hyperref[\detokenize{module/http:httpsuite.http.Message.headers}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{httpsuite.http.Message.headers}}}}},
 {\hyperref[\detokenize{module/http:httpsuite.http.Message.headers}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{httpsuite.http.Message.headers}}}}}, and {\hyperref[\detokenize{module/http:httpsuite.http.Message.body}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{httpsuite.http.Message.body}}}}}.
 \end{sphinxadmonition}
-\index{method() (Request property)@\spxentry{method()}\spxextra{Request property}}
+\index{method (Request property)@\spxentry{method}\spxextra{Request property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Request.method}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{method}}}
+\sphinxAtStartPar
 Method of the HTTP request.
 
 \end{fulllineitems}
 
-\index{target() (Request property)@\spxentry{target()}\spxextra{Request property}}
+\index{target (Request property)@\spxentry{target}\spxextra{Request property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Request.target}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{target}}}
+\sphinxAtStartPar
 Target of the HTTP request.
 
 \end{fulllineitems}
@@ -462,22 +493,29 @@ Target of the HTTP request.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Response.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{\DUrole{n}{protocol}}, \emph{\DUrole{n}{status}}, \emph{\DUrole{n}{status\_msg}}, \emph{\DUrole{n}{headers}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{body}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\sphinxAtStartPar
 Python object representation of an HTTP/1.x response.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
 \item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{protocol}} \textendash{} “\textless{}major\textgreater{}.\textless{}minor\textgreater{}” numbering scheme to indicate versions of the protocol.
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{protocol}} \textendash{} “\textless{}major\textgreater{}.\textless{}minor\textgreater{}” numbering scheme to indicate versions of the
+protocol.
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{status}} \textendash{} Numberical value designating a specific return value.
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{status\_msg}} \textendash{} Message related to the status code.
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{headers}} \textendash{} Collection of case\sphinxhyphen{}insensitive name followed by a colon (:).
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{body}} \textendash{} Data associated with the message.
 
 \end{itemize}
@@ -490,9 +528,11 @@ Python object representation of an HTTP/1.x response.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Response.__str__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_str\_\_}}}{}{}
+\sphinxAtStartPar
 String representation of the Response.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
+\sphinxAtStartPar
 Representation of the Response object with pretty\sphinxhyphen{}print (←) arrows.
 
 \end{description}\end{quote}
@@ -503,21 +543,24 @@ Representation of the Response object with pretty\sphinxhyphen{}print (←) arro
 \begin{center}\sphinxstylestrong{HTTP}
 \end{center}
 \begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
 Note that Response is a child object of a Message and therefore has access to {\hyperref[\detokenize{module/http:httpsuite.http.Message.headers}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{httpsuite.http.Message.headers}}}}},
 {\hyperref[\detokenize{module/http:httpsuite.http.Message.headers}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{httpsuite.http.Message.headers}}}}}, and {\hyperref[\detokenize{module/http:httpsuite.http.Message.body}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{httpsuite.http.Message.body}}}}}.
 \end{sphinxadmonition}
-\index{status() (Response property)@\spxentry{status()}\spxextra{Response property}}
+\index{status (Response property)@\spxentry{status}\spxextra{Response property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Response.status}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{status}}}
+\sphinxAtStartPar
 Status of the HTTP response.
 
 \end{fulllineitems}
 
-\index{status\_msg() (Response property)@\spxentry{status\_msg()}\spxextra{Response property}}
+\index{status\_msg (Response property)@\spxentry{status\_msg}\spxextra{Response property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/http:httpsuite.http.Response.status_msg}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{status\_msg}}}
+\sphinxAtStartPar
 Status message of the HTTP response.
 
 \end{fulllineitems}
@@ -533,6 +576,7 @@ Status message of the HTTP response.
 \PYG{k+kn}{from} \PYG{n+nn}{httpsuite}\PYG{n+nn}{.}\PYG{n+nn}{interface} \PYG{k+kn}{import} \PYG{n}{Item}\PYG{p}{,} \PYG{n}{Headers}\PYG{p}{,} \PYG{n}{TwoWayFrozenDict}\PYG{p}{,} \PYG{n}{FrozenSet}
 \end{sphinxVerbatim}
 \phantomsection\label{\detokenize{module/interface:module-httpsuite.interface}}\index{module@\spxentry{module}!httpsuite.interface@\spxentry{httpsuite.interface}}\index{httpsuite.interface@\spxentry{httpsuite.interface}!module@\spxentry{module}}
+\sphinxAtStartPar
 Lower\sphinxhyphen{}level interfaces that \sphinxcode{\sphinxupquote{httpsuite}} depedents on.
 
 
@@ -542,14 +586,17 @@ Lower\sphinxhyphen{}level interfaces that \sphinxcode{\sphinxupquote{httpsuite}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Headers}}}{\emph{\DUrole{n}{headers}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\sphinxAtStartPar
 Interface for HTTP/1.x headers object.
 \index{\_\_init\_\_() (Headers method)@\spxentry{\_\_init\_\_()}\spxextra{Headers method}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{\DUrole{n}{headers}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\sphinxAtStartPar
 Initializes the Headers object.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{value}} \textendash{} Dictionary, headers, or None object that represents the headers.
 
 \end{description}\end{quote}
@@ -558,30 +605,35 @@ Initializes the Headers object.
 
 
 \begin{center}\sphinxstylestrong{Properties}
-\end{center}\index{string() (Headers property)@\spxentry{string()}\spxextra{Headers property}}
+\end{center}\index{string (Headers property)@\spxentry{string}\spxextra{Headers property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.string}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{string}}}
+\sphinxAtStartPar
 String representation of the Headers.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
+\sphinxAtStartPar
 String representation of the Headers.
 
 \end{description}\end{quote}
 
 \end{fulllineitems}
 
-\index{raw() (Headers property)@\spxentry{raw()}\spxextra{Headers property}}
+\index{raw (Headers property)@\spxentry{raw}\spxextra{Headers property}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/interface:httpsuite.interface.Headers.raw}}\pysigline{\sphinxbfcode{\sphinxupquote{property }}\sphinxbfcode{\sphinxupquote{raw}}}
+\sphinxAtStartPar
 Bytes representation of the Headers.
 
 \begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
 This method will return Headers with “rn” escape characters.
 \end{sphinxadmonition}
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
+\sphinxAtStartPar
 Bytes representation of the Headers.
 
 \end{description}\end{quote}
@@ -591,6 +643,7 @@ Bytes representation of the Headers.
 
 \begin{center}\sphinxstylestrong{Operations}
 \end{center}
+\sphinxAtStartPar
 All of the operations below evaluate to true unless specificed.
 \index{\_\_add\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_add\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}}
 
@@ -615,6 +668,7 @@ All of the operations below evaluate to true unless specificed.
 \end{fulllineitems}
 
 
+\sphinxAtStartPar
 Setting and getting attributes automatically uses \sphinxcode{\sphinxupquote{\_}} as the same as \sphinxcode{\sphinxupquote{\sphinxhyphen{}}}.
 \index{\_\_setattr\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_setattr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}}
 
@@ -670,12 +724,14 @@ Setting and getting attributes automatically uses \sphinxcode{\sphinxupquote{\_}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/interface:httpsuite.interface.TwoWayFrozenDict}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{TwoWayFrozenDict}}}{\emph{\DUrole{n}{dictionary}\DUrole{o}{=}\DUrole{default_value}{\{\}}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\sphinxAtStartPar
 A frozen dictionary with two\sphinxhyphen{}way capabilities. Locks a dictionary in place after
 initilization, and provides accessability via key and value.
 
 \begin{sphinxadmonition}{note}{Note:}
-All the keys and values inside TwoWayFrozenDict are Item objects, which allows easy
-comparissions to check if an item is inside the TwoWayFrozenDict mapping.
+\sphinxAtStartPar
+All the keys and values inside TwoWayFrozenDict are Item objects, which allows
+easy comparissions to check if an item is inside the TwoWayFrozenDict mapping.
 \end{sphinxadmonition}
 
 \end{fulllineitems}
@@ -688,10 +744,220 @@ comparissions to check if an item is inside the TwoWayFrozenDict mapping.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{module/interface:httpsuite.interface.FrozenSet}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{FrozenSet}}}
+\sphinxAtStartPar
 A frozen set with pretty\sphinxhyphen{}print.
 
 \end{fulllineitems}
 
+
+
+\chapter{rfc}
+\label{\detokenize{module/RFC:rfc}}\label{\detokenize{module/RFC::doc}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{httpsuite}\PYG{n+nn}{.}\PYG{n+nn}{RFC} \PYG{k+kn}{import} \PYG{o}{*}
+\end{sphinxVerbatim}
+\phantomsection\label{\detokenize{module/RFC:module-httpsuite.RFC}}\index{module@\spxentry{module}!httpsuite.RFC@\spxentry{httpsuite.RFC}}\index{httpsuite.RFC@\spxentry{httpsuite.RFC}!module@\spxentry{module}}
+\sphinxAtStartPar
+Collection of RFC specifications related to HTTP requests and responses.
+
+\sphinxAtStartPar
+Every item in this file is commented with it’s specific specification, chapter, and section number.
+To access these specifications, utilize the URL \sphinxurl{https://tools.ietf.org/html}/\textless{}id\textgreater{}.
+
+
+\bigskip\hrule\bigskip
+
+
+\begin{center}\sphinxstylestrong{Request \& Response}
+\end{center}
+\sphinxAtStartPar
+\sphinxstylestrong{Core Rules}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} rfc5234\PYGZsh{}appendix\PYGZhy{}B.1}
+\PYG{n}{CR} \PYG{o}{=} \PYG{l+s+sa}{b}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}r}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{n}{LF} \PYG{o}{=} \PYG{l+s+sa}{b}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Protocols}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{PROTOCOLS} \PYG{o}{=} \PYG{n}{FrozenSet}\PYG{p}{(}
+    \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{HTTP/0.9}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc1945\PYGZsh{}section\PYGZhy{}3.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{HTTP/1.0}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc1945\PYGZsh{}section\PYGZhy{}3.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{HTTP/1.1}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{HTTP/2.0}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7540}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{HTTP/3.0}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} draft\PYGZhy{}ietf\PYGZhy{}quic\PYGZhy{}http\PYGZhy{}27}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\begin{center}\sphinxstylestrong{Requests}
+\end{center}
+\sphinxAtStartPar
+\sphinxstylestrong{Methods}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Request Method Definitions}
+\PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4}
+\PYG{n}{REQUEST\PYGZus{}METHODS} \PYG{o}{=} \PYG{n}{FrozenSet}\PYG{p}{(}
+    \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{GET}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4.3.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{HEAD}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4.3.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{POST}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4.3.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{PUT}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4.3.4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{DELETE}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4.3.5}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{CONNECT}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4.3.6}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{OPTIONS}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4.3.7}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{TRACE}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4.3.8}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Headers}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Request Header Fields}
+\PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5}
+\PYG{n}{REQUEST\PYGZus{}HEADERS} \PYG{o}{=} \PYG{n}{FrozenSet}\PYG{p}{(}
+    \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{\PYGZsh{} Control}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Cache\PYGZhy{}Control}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7234\PYGZsh{}section\PYGZhy{}5.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Except}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.1.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Host}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7230\PYGZsh{}section\PYGZhy{}5.4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Max\PYGZhy{}Forwards}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.1.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Pragma}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7234\PYGZsh{}section\PYGZhy{}5.4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Range}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7233\PYGZsh{}section\PYGZhy{}3.1\PYGZdq{}}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{TE}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7230\PYGZsh{}section\PYGZhy{}4.3}
+        \PYG{c+c1}{\PYGZsh{} Conditionals}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{If\PYGZhy{}Match}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7232\PYGZsh{}section\PYGZhy{}3.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{If\PYGZhy{}None\PYGZhy{}Match}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7232\PYGZsh{}section\PYGZhy{}3.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{If\PYGZhy{}Modified\PYGZhy{}Since}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7232\PYGZsh{}section\PYGZhy{}3.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{If\PYGZhy{}Unmodified\PYGZhy{}Since}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7232\PYGZsh{}section\PYGZhy{}3.4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{If\PYGZhy{}Range}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7233\PYGZsh{}section\PYGZhy{}3.2}
+        \PYG{c+c1}{\PYGZsh{} Content Negotiation}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Accept}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.3.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Accept\PYGZhy{}Charset}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.3.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Accept\PYGZhy{}Encoding}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.3.4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Accept\PYGZhy{}Language}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.3.5}
+        \PYG{c+c1}{\PYGZsh{} Authentication Credentials}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Authorization}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Proxy\PYGZhy{}Authorization}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{c+c1}{\PYGZsh{} Request Context}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.5}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{From}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.5.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Referer}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.5.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{User\PYGZhy{}Agent}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}5.5.3}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\begin{center}\sphinxstylestrong{Response}
+\end{center}
+\sphinxAtStartPar
+\sphinxstylestrong{Status Code}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Response Status Code}
+\PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6}
+\PYG{n}{RESPONSE\PYGZus{}STATUS} \PYG{o}{=} \PYG{n}{TwoWayFrozenDict}\PYG{p}{(}
+    \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{\PYGZsh{} Informational 1xx}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.2}
+        \PYG{l+m+mi}{100}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Continue}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.2.1}
+        \PYG{l+m+mi}{101}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Switching Protocols}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.2.2}
+        \PYG{c+c1}{\PYGZsh{} Successful 2xx}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.3}
+        \PYG{l+m+mi}{200}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{OK}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.3.1}
+        \PYG{l+m+mi}{201}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Created}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.3.2}
+        \PYG{l+m+mi}{202}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Accepted}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.3.3}
+        \PYG{l+m+mi}{203}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Non\PYGZhy{}Authoritative Information}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.3.4}
+        \PYG{l+m+mi}{204}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{No Content}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.3.5}
+        \PYG{l+m+mi}{205}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Reset Content}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.3.6}
+        \PYG{l+m+mi}{206}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Partial Content}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7233\PYGZsh{}section\PYGZhy{}4.1}
+        \PYG{c+c1}{\PYGZsh{} Redirection 3xx}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.4}
+        \PYG{l+m+mi}{300}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Multiple Choices}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.4.1}
+        \PYG{l+m+mi}{301}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Moved Permanently}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.4.2}
+        \PYG{l+m+mi}{302}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Found}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.4.3}
+        \PYG{l+m+mi}{303}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{See Other}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.4.4}
+        \PYG{l+m+mi}{304}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Not Modified}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7232\PYGZsh{}section\PYGZhy{}4.1}
+        \PYG{l+m+mi}{305}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Use Proxy}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.4.5}
+        \PYG{l+m+mi}{307}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Temporary Redirect}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.4.7}
+        \PYG{c+c1}{\PYGZsh{} Client Error 4xx}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5}
+        \PYG{l+m+mi}{400}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Bad Request}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.1}
+        \PYG{l+m+mi}{401}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Unauthorized}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7235\PYGZsh{}section\PYGZhy{}3.1}
+        \PYG{l+m+mi}{402}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Payment Required}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.2}
+        \PYG{l+m+mi}{403}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Forbidden}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.3}
+        \PYG{l+m+mi}{404}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Not Found}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.4}
+        \PYG{l+m+mi}{405}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Method Not Allowed}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.5}
+        \PYG{l+m+mi}{406}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Not Acceptable}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.6}
+        \PYG{l+m+mi}{407}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Proxy Authentication Required}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7235\PYGZsh{}section\PYGZhy{}3.2}
+        \PYG{l+m+mi}{408}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Request Timeout}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.7}
+        \PYG{l+m+mi}{409}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Conflict}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.8}
+        \PYG{l+m+mi}{410}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Gone}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.9}
+        \PYG{l+m+mi}{411}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Length Required}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.10}
+        \PYG{l+m+mi}{412}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Precondition Failed}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7232\PYGZsh{}section\PYGZhy{}4.2}
+        \PYG{l+m+mi}{413}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Payload Too Large}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.11}
+        \PYG{l+m+mi}{414}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{URI Too Long}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.12}
+        \PYG{l+m+mi}{415}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Unsupported Media Type}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.13}
+        \PYG{l+m+mi}{416}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Range Not Satisfiable}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7233\PYGZsh{}section\PYGZhy{}4.4}
+        \PYG{l+m+mi}{417}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Expectation Failed}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.14}
+        \PYG{l+m+mi}{426}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Upgrade Required}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.5.15}
+        \PYG{c+c1}{\PYGZsh{} Server Error 5xx}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.6}
+        \PYG{l+m+mi}{500}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Internal Server Error}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.6.1}
+        \PYG{l+m+mi}{501}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Not Implemented}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.6.2}
+        \PYG{l+m+mi}{502}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Bad Gateway}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.6.3}
+        \PYG{l+m+mi}{503}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Service Unavailable}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.6.4}
+        \PYG{l+m+mi}{504}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Gateway Timeout}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.6.5}
+        \PYG{l+m+mi}{505}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{HTTP Version Not Supported}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}6.6.6}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Headers}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Response Header Fields}
+\PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7}
+\PYG{n}{RESPONSE\PYGZus{}HEADER} \PYG{o}{=} \PYG{n}{FrozenSet}\PYG{p}{(}
+    \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{\PYGZsh{} Control Data}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Age}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7234\PYGZsh{}section\PYGZhy{}5.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Cache\PYGZhy{}Control}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7234\PYGZsh{}section\PYGZhy{}5.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Expires}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7234\PYGZsh{}section\PYGZhy{}5.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Date}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.1.1.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Location}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.1.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Retry\PYGZhy{}After}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.1.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Vary}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.1.4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Warning}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7234\PYGZsh{}section\PYGZhy{}5.5}
+        \PYG{c+c1}{\PYGZsh{} Validator Header Fields}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.2}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ETag}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7232\PYGZsh{}section\PYGZhy{}2.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Last\PYGZhy{}Modified}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7232\PYGZsh{}section\PYGZhy{}2.2}
+        \PYG{c+c1}{\PYGZsh{} Authentication Challenges}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{WWW\PYGZhy{}Authenticate}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7235\PYGZsh{}section\PYGZhy{}4.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Proxy\PYGZhy{}Authenticate}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7235\PYGZsh{}section\PYGZhy{}4.3}
+        \PYG{c+c1}{\PYGZsh{} Response Context}
+        \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.4}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Accept\PYGZhy{}Ranges}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7233\PYGZsh{}section\PYGZhy{}2.3}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Allow}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.4.1}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Server}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} rfc7231\PYGZsh{}section\PYGZhy{}7.4.2}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{)}
+\end{sphinxVerbatim}
 
 
 \chapter{Basic Use}
@@ -775,6 +1041,7 @@ A frozen set with pretty\sphinxhyphen{}print.
 
 \chapter{Advance Use}
 \label{\detokenize{writeups/Advance Use:advance-use}}\label{\detokenize{writeups/Advance Use::doc}}
+\sphinxAtStartPar
 Advance examples of \sphinxcode{\sphinxupquote{httpsuite}} being used.
 
 
@@ -981,17 +1248,21 @@ Advance examples of \sphinxcode{\sphinxupquote{httpsuite}} being used.
 \chapter{Glossary}
 \label{\detokenize{misc/Glossary:glossary}}\label{\detokenize{misc/Glossary::doc}}\begin{description}
 \item[{compile\index{compile@\spxentry{compile}|spxpagem}\phantomsection\label{\detokenize{misc/Glossary:term-compile}}}] \leavevmode
+\sphinxAtStartPar
 In the context of \sphinxcode{\sphinxupquote{httpsuite}}, compiling means converting a \sphinxcode{\sphinxupquote{Response}} or \sphinxcode{\sphinxupquote{Request}} object into
 another more useable type, typically either \sphinxcode{\sphinxupquote{str}} or \sphinxcode{\sphinxupquote{bytes}}.
 
 \item[{message\index{message@\spxentry{message}|spxpagem}\phantomsection\label{\detokenize{misc/Glossary:term-message}}}] \leavevmode
+\sphinxAtStartPar
 The parent object of both an HTTP request and response.
 
 \item[{modify\index{modify@\spxentry{modify}|spxpagem}\phantomsection\label{\detokenize{misc/Glossary:term-modify}}}] \leavevmode
+\sphinxAtStartPar
 In the context of \sphinxcode{\sphinxupquote{httpsuite}}, modifying means changing attributes in either the \sphinxcode{\sphinxupquote{Request}} or
 \sphinxcode{\sphinxupquote{Response}} objects. When modifications are applied to these objects usually compilation follows.
 
 \item[{parse\index{parse@\spxentry{parse}|spxpagem}\phantomsection\label{\detokenize{misc/Glossary:term-parse}}}] \leavevmode
+\sphinxAtStartPar
 In the context of \sphinxcode{\sphinxupquote{httpsuite}}, parsing means interpreting an external type and creating a representative
 \sphinxcode{\sphinxupquote{Response}} or \sphinxcode{\sphinxupquote{Request}} object.
 
@@ -1007,9 +1278,11 @@ In the context of \sphinxcode{\sphinxupquote{httpsuite}}, parsing means interpre
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.1.0}}}
 \label{\detokenize{misc/Versions:id1}}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 Revamped and cleaned the codebase.
 
 \item {} 
+\sphinxAtStartPar
 Update documentation.
 
 \end{itemize}
@@ -1018,12 +1291,15 @@ Update documentation.
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.6}}}
 \label{\detokenize{misc/Versions:id2}}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 Updated core \sphinxcode{\sphinxupquote{Message}} to include \sphinxcode{\sphinxupquote{protocol}} by default.
 
 \item {} 
+\sphinxAtStartPar
 Removed \sphinxcode{\sphinxupquote{info.py}} and place content inside \sphinxcode{\sphinxupquote{\_\_init\_\_.py}}.
 
 \item {} 
+\sphinxAtStartPar
 Formatted some tests with Black.
 
 \end{itemize}
@@ -1032,6 +1308,7 @@ Formatted some tests with Black.
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.5}}}
 \label{\detokenize{misc/Versions:id3}}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 Fixed documentation bug relating to \sphinxcode{\sphinxupquote{sphinx\_rtd\_theme}}.
 
 \end{itemize}
@@ -1040,6 +1317,7 @@ Fixed documentation bug relating to \sphinxcode{\sphinxupquote{sphinx\_rtd\_them
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.4}}}
 \label{\detokenize{misc/Versions:id4}}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 Fixed documentation bug relating to \sphinxcode{\sphinxupquote{m2r}}.
 
 \end{itemize}
@@ -1048,12 +1326,15 @@ Fixed documentation bug relating to \sphinxcode{\sphinxupquote{m2r}}.
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.3}}}
 \label{\detokenize{misc/Versions:id5}}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 Fixed PyLint errors.
 
 \item {} 
+\sphinxAtStartPar
 Added \sphinxcode{\sphinxupquote{\_\_bool\_\_}} to \sphinxcode{\sphinxupquote{Item}} for accurate comparissons (i.e. \sphinxcode{\sphinxupquote{if request.body}} will return \sphinxcode{\sphinxupquote{False}} when no body exists).
 
 \item {} 
+\sphinxAtStartPar
 Modified \sphinxcode{\sphinxupquote{Message.\_compile}} input param \sphinxcode{\sphinxupquote{format}} to \sphinxcode{\sphinxupquote{frmt}}.
 
 \end{itemize}
@@ -1062,6 +1343,7 @@ Modified \sphinxcode{\sphinxupquote{Message.\_compile}} input param \sphinxcode{
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.2}}}
 \label{\detokenize{misc/Versions:id6}}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 Cleaned up imports and codebase.
 
 \end{itemize}
@@ -1070,6 +1352,7 @@ Cleaned up imports and codebase.
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.1}}}
 \label{\detokenize{misc/Versions:id7}}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 Cleaned up imports and codebase.
 
 \end{itemize}
@@ -1078,6 +1361,7 @@ Cleaned up imports and codebase.
 \subsection{\sphinxstyleliteralintitle{\sphinxupquote{1.0.0}}}
 \label{\detokenize{misc/Versions:id8}}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 Initial commit.
 
 \end{itemize}
@@ -1116,6 +1400,7 @@ Initial commit.
 \bigletter{h}
 \item\relax\sphinxstyleindexentry{httpsuite.http}\sphinxstyleindexpageref{module/http:\detokenize{module-httpsuite.http}}
 \item\relax\sphinxstyleindexentry{httpsuite.interface}\sphinxstyleindexpageref{module/interface:\detokenize{module-httpsuite.interface}}
+\item\relax\sphinxstyleindexentry{httpsuite.RFC}\sphinxstyleindexpageref{module/RFC:\detokenize{module-httpsuite.RFC}}
 \end{sphinxtheindex}
 
 \renewcommand{\indexname}{Index}

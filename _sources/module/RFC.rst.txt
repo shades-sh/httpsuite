@@ -4,9 +4,9 @@ rfc
 
 .. code-block:: python
 
-  from httpsuite.rfc import *
+  from httpsuite.RFC import *
 
-.. automodule:: httpsuite.rfc
+.. automodule:: httpsuite.RFC
 
 ------
 

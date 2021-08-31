@@ -26,11 +26,11 @@
 
   \indexspace
   \bigletter B
-  \item \spxentry{body()}\spxextra{Message property}, \hyperpage{6}
+  \item \spxentry{body}\spxextra{Message property}, \hyperpage{6}
 
   \indexspace
   \bigletter C
-  \item \spxentry {compile}, \hyperindexformat{\spxpagem}{17}
+  \item \spxentry{compile}, \hyperindexformat{\spxpagem}{23}
 
   \indexspace
   \bigletter F
@@ -39,45 +39,48 @@
   \indexspace
   \bigletter H
   \item \spxentry{Headers}\spxextra{class in httpsuite.interface}, \hyperpage{9}
-  \item \spxentry{headers()}\spxextra{Message property}, \hyperpage{6}
+  \item \spxentry{headers}\spxextra{Message property}, \hyperpage{6}
   \item \spxentry{httpsuite.http}
     \subitem \spxentry{module}, \hyperpage{5}
   \item \spxentry{httpsuite.interface}
     \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{httpsuite.RFC}
+    \subitem \spxentry{module}, \hyperpage{11}
 
   \indexspace
   \bigletter M
-  \item \spxentry {message}, \hyperindexformat{\spxpagem}{17}
+  \item \spxentry{message}, \hyperindexformat{\spxpagem}{23}
   \item \spxentry{Message}\spxextra{class in httpsuite.http}, \hyperpage{5}
-  \item \spxentry{method()}\spxextra{Request property}, \hyperpage{6}
-  \item \spxentry {modify}, \hyperindexformat{\spxpagem}{17}
+  \item \spxentry{method}\spxextra{Request property}, \hyperpage{6}
+  \item \spxentry{modify}, \hyperindexformat{\spxpagem}{23}
   \item \spxentry{module}
     \subitem \spxentry{httpsuite.http}, \hyperpage{5}
     \subitem \spxentry{httpsuite.interface}, \hyperpage{9}
+    \subitem \spxentry{httpsuite.RFC}, \hyperpage{11}
 
   \indexspace
   \bigletter P
-  \item \spxentry {parse}, \hyperindexformat{\spxpagem}{17}
+  \item \spxentry{parse}, \hyperindexformat{\spxpagem}{23}
   \item \spxentry{parse()}\spxextra{Message.httpsuite.http.Message method}, \hyperpage{5}
-  \item \spxentry{protocol()}\spxextra{Message property}, \hyperpage{6}
+  \item \spxentry{protocol}\spxextra{Message property}, \hyperpage{6}
 
   \indexspace
   \bigletter R
-  \item \spxentry{raw()}\spxextra{Headers property}, \hyperpage{9}
-  \item \spxentry{raw()}\spxextra{Message property}, \hyperpage{6}
+  \item \spxentry{raw}\spxextra{Headers property}, \hyperpage{9}
+  \item \spxentry{raw}\spxextra{Message property}, \hyperpage{6}
   \item \spxentry{Request}\spxextra{class in httpsuite.http}, \hyperpage{6}
   \item \spxentry{Response}\spxextra{class in httpsuite.http}, \hyperpage{6}
 
   \indexspace
   \bigletter S
-  \item \spxentry{status()}\spxextra{Response property}, \hyperpage{7}
-  \item \spxentry{status\_msg()}\spxextra{Response property}, \hyperpage{7}
-  \item \spxentry{string()}\spxextra{Headers property}, \hyperpage{9}
-  \item \spxentry{string()}\spxextra{Message property}, \hyperpage{5}
+  \item \spxentry{status}\spxextra{Response property}, \hyperpage{7}
+  \item \spxentry{status\_msg}\spxextra{Response property}, \hyperpage{7}
+  \item \spxentry{string}\spxextra{Headers property}, \hyperpage{9}
+  \item \spxentry{string}\spxextra{Message property}, \hyperpage{5}
 
   \indexspace
   \bigletter T
-  \item \spxentry{target()}\spxextra{Request property}, \hyperpage{6}
+  \item \spxentry{target}\spxextra{Request property}, \hyperpage{6}
   \item \spxentry{TwoWayFrozenDict}\spxextra{class in httpsuite.interface}, \hyperpage{10}
 
 \end{sphinxtheindex}

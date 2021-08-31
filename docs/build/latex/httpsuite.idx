@@ -3,27 +3,27 @@
 \indexentry{Message (class in httpsuite.http)@\spxentry{Message}\spxextra{class in httpsuite.http}|hyperpage}{5}
 \indexentry{\_\_init\_\_() (Message method)@\spxentry{\_\_init\_\_()}\spxextra{Message method}|hyperpage}{5}
 \indexentry{parse() (Message.httpsuite.http.Message method)@\spxentry{parse()}\spxextra{Message.httpsuite.http.Message method}|hyperpage}{5}
-\indexentry{string() (Message property)@\spxentry{string()}\spxextra{Message property}|hyperpage}{5}
-\indexentry{raw() (Message property)@\spxentry{raw()}\spxextra{Message property}|hyperpage}{6}
-\indexentry{protocol() (Message property)@\spxentry{protocol()}\spxextra{Message property}|hyperpage}{6}
-\indexentry{headers() (Message property)@\spxentry{headers()}\spxextra{Message property}|hyperpage}{6}
-\indexentry{body() (Message property)@\spxentry{body()}\spxextra{Message property}|hyperpage}{6}
+\indexentry{string (Message property)@\spxentry{string}\spxextra{Message property}|hyperpage}{5}
+\indexentry{raw (Message property)@\spxentry{raw}\spxextra{Message property}|hyperpage}{6}
+\indexentry{protocol (Message property)@\spxentry{protocol}\spxextra{Message property}|hyperpage}{6}
+\indexentry{headers (Message property)@\spxentry{headers}\spxextra{Message property}|hyperpage}{6}
+\indexentry{body (Message property)@\spxentry{body}\spxextra{Message property}|hyperpage}{6}
 \indexentry{Request (class in httpsuite.http)@\spxentry{Request}\spxextra{class in httpsuite.http}|hyperpage}{6}
 \indexentry{\_\_init\_\_() (Request method)@\spxentry{\_\_init\_\_()}\spxextra{Request method}|hyperpage}{6}
 \indexentry{\_\_str\_\_() (Request method)@\spxentry{\_\_str\_\_()}\spxextra{Request method}|hyperpage}{6}
-\indexentry{method() (Request property)@\spxentry{method()}\spxextra{Request property}|hyperpage}{6}
-\indexentry{target() (Request property)@\spxentry{target()}\spxextra{Request property}|hyperpage}{6}
+\indexentry{method (Request property)@\spxentry{method}\spxextra{Request property}|hyperpage}{6}
+\indexentry{target (Request property)@\spxentry{target}\spxextra{Request property}|hyperpage}{6}
 \indexentry{Response (class in httpsuite.http)@\spxentry{Response}\spxextra{class in httpsuite.http}|hyperpage}{6}
 \indexentry{\_\_init\_\_() (Response method)@\spxentry{\_\_init\_\_()}\spxextra{Response method}|hyperpage}{6}
 \indexentry{\_\_str\_\_() (Response method)@\spxentry{\_\_str\_\_()}\spxextra{Response method}|hyperpage}{7}
-\indexentry{status() (Response property)@\spxentry{status()}\spxextra{Response property}|hyperpage}{7}
-\indexentry{status\_msg() (Response property)@\spxentry{status\_msg()}\spxextra{Response property}|hyperpage}{7}
+\indexentry{status (Response property)@\spxentry{status}\spxextra{Response property}|hyperpage}{7}
+\indexentry{status\_msg (Response property)@\spxentry{status\_msg}\spxextra{Response property}|hyperpage}{7}
 \indexentry{module@\spxentry{module}!httpsuite.interface@\spxentry{httpsuite.interface}|hyperpage}{9}
 \indexentry{httpsuite.interface@\spxentry{httpsuite.interface}!module@\spxentry{module}|hyperpage}{9}
 \indexentry{Headers (class in httpsuite.interface)@\spxentry{Headers}\spxextra{class in httpsuite.interface}|hyperpage}{9}
 \indexentry{\_\_init\_\_() (Headers method)@\spxentry{\_\_init\_\_()}\spxextra{Headers method}|hyperpage}{9}
-\indexentry{string() (Headers property)@\spxentry{string()}\spxextra{Headers property}|hyperpage}{9}
-\indexentry{raw() (Headers property)@\spxentry{raw()}\spxextra{Headers property}|hyperpage}{9}
+\indexentry{string (Headers property)@\spxentry{string}\spxextra{Headers property}|hyperpage}{9}
+\indexentry{raw (Headers property)@\spxentry{raw}\spxextra{Headers property}|hyperpage}{9}
 \indexentry{\_\_add\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_add\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}|hyperpage}{9}
 \indexentry{\_\_iadd\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_iadd\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}|hyperpage}{9}
 \indexentry{\_\_setattr\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_setattr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}|hyperpage}{9}
@@ -32,7 +32,9 @@
 \indexentry{\_\_repr\_\_() (Headers.httpsuite.interface.Headers method)@\spxentry{\_\_repr\_\_()}\spxextra{Headers.httpsuite.interface.Headers method}|hyperpage}{10}
 \indexentry{TwoWayFrozenDict (class in httpsuite.interface)@\spxentry{TwoWayFrozenDict}\spxextra{class in httpsuite.interface}|hyperpage}{10}
 \indexentry{FrozenSet (class in httpsuite.interface)@\spxentry{FrozenSet}\spxextra{class in httpsuite.interface}|hyperpage}{10}
-\indexentry{compile@\spxentry {compile}|hyperindexformat{\spxpagem}}{17}
-\indexentry{message@\spxentry {message}|hyperindexformat{\spxpagem}}{17}
-\indexentry{modify@\spxentry {modify}|hyperindexformat{\spxpagem}}{17}
-\indexentry{parse@\spxentry {parse}|hyperindexformat{\spxpagem}}{17}
+\indexentry{module@\spxentry{module}!httpsuite.RFC@\spxentry{httpsuite.RFC}|hyperpage}{11}
+\indexentry{httpsuite.RFC@\spxentry{httpsuite.RFC}!module@\spxentry{module}|hyperpage}{11}
+\indexentry{compile@\spxentry{compile}|hyperindexformat{\spxpagem}}{23}
+\indexentry{message@\spxentry{message}|hyperindexformat{\spxpagem}}{23}
+\indexentry{modify@\spxentry{modify}|hyperindexformat{\spxpagem}}{23}
+\indexentry{parse@\spxentry{parse}|hyperindexformat{\spxpagem}}{23}
